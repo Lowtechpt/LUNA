@@ -53,7 +53,7 @@ export default function Logo({ className = "", imgClassName = "h-20 md:h-24" }: 
       ctx.putImageData(imageData, 0, 0);
       setDataUrl(canvas.toDataURL());
     };
-    img.src = "/images/luna-logo.webp";
+    img.src = "./images/luna-logo.webp";
   }, []);
 
   return (
