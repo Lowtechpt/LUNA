@@ -1,0 +1,233 @@
+import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
+import { ArrowRight, Zap, Layers, Cpu, Grid, X } from "lucide-react";
+import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { CLIENTS } from "../constants";
+
+export default function Home() {
+  const heroRef = useRef(null);
+  const [showAllClients, setShowAllClients] = useState(false);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
+  return (
+    <div className="pt-20">
+      {/* Hero Section */}
+      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center py-24 md:py-32">
+        <motion.div style={{ y, opacity }} className="absolute inset-0 z-0 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black z-10" />
+          <img 
+            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1920" 
+            alt="Technology Background" 
+            className="w-full h-full object-cover opacity-40"
+            referrerPolicy="no-referrer"
+          />
+        </motion.div>
+
+        <div className="relative z-20 max-w-7xl mx-auto px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <span className="inline-block px-4 py-1 rounded-full border border-white/20 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-sm">
+              The Future of Interaction
+            </span>
+            <h1 className="text-5xl md:text-8xl lg:text-9xl font-logo font-black tracking-tighter leading-[0.9] mb-8">
+              É CIENTÍFICA, <br />
+              <span className="text-gradient">MAS JÁ NÃO É FICÇÃO.</span>
+            </h1>
+            <p className="max-w-2xl mx-auto text-base md:text-xl opacity-60 font-light leading-relaxed mb-12">
+              <span className="font-logo font-bold tracking-widest text-brand">LUNA</span> é uma linha de equipamentos idealizada e comercializada exclusivamente pela RSB. 
+              Tecnologia multimédia, holográfica e tridimensional de forte impacto visual.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 px-4 sm:px-0">
+              <Link to="/solucoes" className="w-full sm:w-auto px-10 py-5 bg-brand text-white font-bold rounded-full flex items-center justify-center gap-2 hover:scale-105 transition-transform shadow-xl shadow-brand/20">
+                Explorar Soluções <ArrowRight size={18} />
+              </Link>
+              <button className="w-full sm:w-auto px-10 py-5 border border-white/20 hover:bg-white/10 font-bold rounded-full transition-all backdrop-blur-sm">
+                Ver Showreel
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Features */}
+      <section className="py-24 border-y border-white/5 bg-white/[0.02]">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12">
+          {[
+            { icon: <Zap className="text-brand" />, title: "Impacto Imediato", desc: "Soluções desenhadas para captar a atenção em segundos." },
+            { icon: <Layers className="text-brand" />, title: "Multidimensional", desc: "Hologramas e projeções que desafiam a perceção física." },
+            { icon: <Cpu className="text-brand" />, title: "Vanguarda Tecnológica", desc: "Equipamentos exclusivos com as mais recentes inovações." }
+          ].map((feature, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.2 }}
+              className="flex flex-col items-center text-center gap-4 group"
+            >
+              <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-2 group-hover:bg-brand/20 transition-colors">
+                {feature.icon}
+              </div>
+              <h3 className="text-xl font-bold">{feature.title}</h3>
+              <p className="opacity-50 text-sm leading-relaxed">{feature.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Showreel Section */}
+      <section className="py-32 relative overflow-hidden bg-black">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row items-end justify-between gap-8 mb-16">
+            <div className="max-w-2xl">
+              <span className="text-brand font-bold uppercase tracking-widest text-xs mb-4 block">Visual Experience</span>
+              <h2 className="text-4xl md:text-6xl font-display font-bold tracking-tighter">
+                O Impacto da <span className="italic">Inovação</span> em Movimento.
+              </h2>
+            </div>
+            <p className="max-w-md opacity-50 text-sm leading-relaxed mb-2">
+              Veja como as nossas soluções transformam espaços e criam memórias inesquecíveis para as maiores marcas do mundo.
+            </p>
+          </div>
+
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="relative aspect-video rounded-3xl overflow-hidden border border-white/10 group cursor-pointer"
+          >
+            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors z-10 flex items-center justify-center">
+              <div className="w-24 h-24 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <div className="w-0 h-0 border-t-[12px] border-t-transparent border-l-[20px] border-l-white border-b-[12px] border-b-transparent ml-2" />
+              </div>
+            </div>
+            <img 
+              src="https://images.unsplash.com/photo-1550745679-33d01608216a?auto=format&fit=crop&q=80&w=1920" 
+              alt="Showreel Preview" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              referrerPolicy="no-referrer"
+            />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-24 bg-brand text-white overflow-hidden relative">
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-white/5 -skew-x-12 translate-x-1/2" />
+        <div className="max-w-7xl mx-auto px-6 relative z-10 grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+          {[
+            { label: "Projetos", value: "500+" },
+            { label: "Países", value: "12" },
+            { label: "Soluções", value: "27" },
+            { label: "Anos RSB", value: "15+" }
+          ].map((stat, i) => (
+            <div key={i} className="flex flex-col gap-2">
+              <span className="text-4xl md:text-6xl font-display font-bold tracking-tighter">{stat.value}</span>
+              <span className="text-xs uppercase tracking-widest font-bold opacity-70">{stat.label}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Clients Section */}
+      <section className="py-32 bg-zinc-950 border-y border-white/5 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 text-center mb-12">
+          <span className="text-brand font-bold uppercase tracking-widest text-[10px] mb-4 block">Social Proof</span>
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold tracking-tighter mb-8">Marcas que Confiam na <span className="italic text-gradient font-logo">LUNA</span></h2>
+          
+          <button 
+            onClick={() => setShowAllClients(!showAllClients)}
+            className="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-white/10 hover:bg-white/5 transition-colors text-xs font-bold uppercase tracking-widest"
+          >
+            {showAllClients ? (
+              <><X size={14} /> Fechar Lista</>
+            ) : (
+              <><Grid size={14} /> Ver Todas as Marcas</>
+            )}
+          </button>
+        </div>
+        
+        <div className="relative">
+          <AnimatePresence mode="wait">
+            {!showAllClients ? (
+              <motion.div 
+                key="marquee"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="relative flex overflow-x-hidden py-12"
+              >
+                <motion.div 
+                  animate={{ x: ["0%", "-50%"] }}
+                  transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
+                  className="flex whitespace-nowrap gap-16 items-center"
+                >
+                  {[...CLIENTS, ...CLIENTS].map((client, i) => (
+                    <div 
+                      key={`${client}-${i}`} 
+                      className="flex items-center justify-center font-display font-bold text-3xl md:text-5xl lg:text-6xl tracking-tighter opacity-20 hover:opacity-100 hover:text-brand transition-all duration-500 cursor-default px-4"
+                    >
+                      {client}
+                    </div>
+                  ))}
+                </motion.div>
+                {/* Gradient masks for smooth fade */}
+                <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-zinc-950 to-transparent z-10" />
+                <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-zinc-950 to-transparent z-10" />
+              </motion.div>
+            ) : (
+              <motion.div 
+                key="grid"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 py-12"
+              >
+                {CLIENTS.map((client, i) => (
+                  <motion.div 
+                    key={client}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: i * 0.02 }}
+                    className="aspect-video bg-white/5 rounded-2xl flex items-center justify-center p-6 border border-white/5 hover:border-brand/30 hover:bg-brand/5 transition-all group"
+                  >
+                    <span className="font-display font-bold text-xl md:text-2xl tracking-tighter opacity-40 group-hover:opacity-100 group-hover:text-brand transition-all text-center">
+                      {client}
+                    </span>
+                  </motion.div>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-32 relative overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-brand/20 blur-[120px] rounded-full scale-150 translate-y-1/2" />
+        </div>
+        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
+          <h2 className="text-5xl md:text-7xl font-display font-bold tracking-tighter mb-8 italic">
+            Dê vida à sua marca com a <span className="font-logo not-italic">LUNA</span>.
+          </h2>
+          <p className="text-xl opacity-60 mb-12">
+            Estamos prontos para transformar a sua visão em realidade tecnológica. 
+          </p>
+          <Link to="/contactos" className="inline-block px-12 py-5 bg-white text-black font-bold rounded-full text-lg hover:scale-105 transition-transform shadow-2xl shadow-white/10">
+            Falar com um Especialista
+          </Link>
+        </div>
+      </section>
+    </div>
+  );
+}
