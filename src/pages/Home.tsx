@@ -188,42 +188,26 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="max-w-xl mx-auto text-sm md:text-base opacity-50 font-sans leading-relaxed mb-12"
+              className="max-w-3xl mx-auto text-sm md:text-base opacity-50 font-sans leading-relaxed mb-12"
             >
               <span className="font-logo font-bold tracking-widest text-brand opacity-100">LUNA</span> é uma linha de equipamentos idealizada e comercializada exclusivamente pela RSB. 
+              <br />
               Tecnologia multimédia, holográfica e tridimensional de forte impacto visual.
             </motion.p>
-            
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.8 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-6 px-4 sm:px-0"
-            >
-              <Link to="/solucoes" className="group relative w-full sm:w-auto px-8 py-4 bg-transparent text-white font-sans text-sm tracking-widest uppercase flex items-center justify-center gap-3 overflow-hidden border border-white/20 rounded-full hover:border-brand transition-colors duration-500">
-                <div className="absolute inset-0 bg-brand translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-in-out" />
-                <span className="relative z-10 font-medium">Explorar Soluções</span>
-                <ArrowRight size={16} className="relative z-10 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <button 
-                className="w-full sm:w-auto px-8 py-4 text-technical text-white/50 hover:text-white transition-colors"
-                aria-label="Assistir ao vídeo de apresentação da LUNA"
-              >
-                Ver Showreel
-              </button>
-            </motion.div>
           </motion.div>
         </div>
         
-        {/* Scroll Indicator */}
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 1 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          transition={{ duration: 1, delay: 0.8 }}
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex items-center justify-center"
         >
-          <span className="text-technical text-xs opacity-60">SCROLL</span>
-          <div className="w-px h-12 bg-gradient-to-b from-white/30 to-transparent" />
+          <Link to="/solucoes" className="group relative px-8 py-4 bg-transparent text-white font-sans text-sm tracking-widest uppercase flex items-center justify-center gap-3 overflow-hidden border border-white/20 rounded-full hover:border-brand transition-colors duration-500">
+            <div className="absolute inset-0 bg-brand translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-in-out" />
+            <span className="relative z-10 font-medium">Explorar Soluções</span>
+            <ArrowRight size={16} className="relative z-10 group-hover:translate-x-1 transition-transform" />
+          </Link>
         </motion.div>
       </section>
 
@@ -259,12 +243,11 @@ export default function Home() {
       {/* Stats Section */}
       <section className="py-32 relative border-y border-white/5">
         <div className="absolute inset-0 atmosphere opacity-50" />
-        <div className="max-w-7xl mx-auto px-6 relative z-10 grid grid-cols-2 md:grid-cols-4 gap-16 text-center">
+        <div className="max-w-7xl mx-auto px-6 relative z-10 grid grid-cols-1 md:grid-cols-3 gap-16 text-center">
           {[
-            { label: "Projetos", value: "500+" },
-            { label: "Países", value: "12" },
+            { label: "Projetos", value: "700+" },
             { label: "Soluções", value: "27" },
-            { label: "Anos RSB", value: "15+" }
+            { label: "Anos RSB", value: "10" }
           ].map((stat, i) => (
             <motion.div 
               key={i} 
@@ -285,7 +268,7 @@ export default function Home() {
       <section className="py-40 bg-[#050505] relative overflow-hidden">
         <div className="absolute inset-0 atmosphere opacity-30" />
         <div className="max-w-7xl mx-auto px-6 text-center mb-24 relative z-10">
-          <span className="text-technical text-brand mb-6 block">02 // SOCIAL PROOF</span>
+          <span className="text-technical text-brand mb-6 block">02 // CLIENTES</span>
           <h2 className="text-cinematic text-5xl md:text-7xl mb-12">
             Marcas que confiam na <span className="italic font-logo text-white/60">LUNA</span>
           </h2>
@@ -364,13 +347,15 @@ export default function Home() {
       <section className="py-40 relative overflow-hidden">
         <div className="absolute inset-0 z-0 atmosphere opacity-80" />
         <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-          <span className="text-technical text-brand mb-8 block">03 // INITIATE</span>
+          <span className="text-technical text-brand mb-8 block">03 // INICIAR</span>
           <h2 className="text-cinematic text-5xl md:text-8xl mb-10">
             Dê vida à sua marca <br />
             <span className="italic text-white/60">com a LUNA.</span>
           </h2>
           <p className="font-sans text-base md:text-lg opacity-50 font-light mb-16 max-w-xl mx-auto">
-            Estamos prontos para transformar a sua visão em realidade tecnológica. O futuro não espera.
+            Estamos prontos para transformar a sua visão em realidade tecnológica. 
+            <br />
+            O futuro não espera.
           </p>
           <Link to="/contactos" className="group relative inline-flex items-center justify-center px-12 py-5 bg-white text-black font-sans text-sm tracking-widest uppercase font-medium overflow-hidden rounded-full transition-transform hover:scale-105">
             <div className="absolute inset-0 bg-brand translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-in-out" />
