@@ -44,7 +44,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-3">
                 <Mail size={18} className="text-brand" />
-                <p>geral@rsb.pt</p>
+                <a href="mailto:geral@rsb.pt" className="hover:text-brand transition-colors">geral@rsb.pt</a>
               </div>
               <div className="flex items-center gap-3">
                 <Globe size={18} className="text-brand" />

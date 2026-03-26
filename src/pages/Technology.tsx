@@ -65,7 +65,7 @@ export default function Technology() {
         {/* Process Section */}
         <section className="mt-40">
           <div className="text-center mb-24">
-            <span className="text-technical text-brand mb-6 block">02 // METHODOLOGY</span>
+            <span className="text-technical text-brand mb-6 block">02 // METODOLOGIA</span>
             <h2 className="text-cinematic text-5xl md:text-7xl">
               Do Conceito à <span className="italic text-white/60">Realidade</span>.
             </h2>
@@ -76,7 +76,7 @@ export default function Technology() {
             {[
               { step: "01", title: "Análise", desc: "Estudamos o espaço e os objetivos da sua marca." },
               { step: "02", title: "Design", desc: "Criamos o conceito visual e a solução técnica ideal." },
-              { step: "03", title: "Produção", desc: "Desenvolvemos os conteúdos 3D personalizados." },
+              { step: "03", title: "Produção", desc: "Desenvolvemos os conteúdos personalizados." },
               { step: "04", title: "Ativação", desc: "Instalação e suporte para um impacto memorável." }
             ].map((item, i) => (
               <motion.div 

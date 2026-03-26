@@ -34,9 +34,9 @@ export default function Navbar() {
               {link.name}
             </Link>
           ))}
-          <button className="px-5 py-2 bg-white text-black text-sm font-bold rounded-full hover:bg-brand hover:text-white transition-all">
+          <a href="mailto:geral@rsb.pt" className="px-5 py-2 bg-white text-black text-sm font-bold rounded-full hover:bg-brand hover:text-white transition-all">
             Pedir Orçamento
-          </button>
+          </a>
         </div>
 
         <button 
@@ -67,9 +67,9 @@ export default function Navbar() {
                   {link.name}
                 </Link>
               ))}
-              <button className="w-full py-4 bg-brand text-white font-bold rounded-xl flex items-center justify-center gap-2">
+              <a href="mailto:geral@rsb.pt" className="w-full py-4 bg-brand text-white font-bold rounded-xl flex items-center justify-center gap-2">
                 Pedir Orçamento <ChevronRight size={18} />
-              </button>
+              </a>
             </div>
           </motion.div>
         )}

@@ -60,67 +60,25 @@ const TiltCard = ({ children, className }: { children: React.ReactNode, classNam
   );
 };
 
-const ClientLogo = ({ name }: { name: string }) => {
+const ClientLogo = ({ client }: { client: { name: string, logo: string } }) => {
   const [imgError, setImgError] = useState(false);
   
-  // Map known clients to Simple Icons slugs for instant, reliable loading
-  const simpleIconsMap: Record<string, string> = {
-    "Jeep": "jeep",
-    "Coca-Cola": "cocacola",
-    "Auchan": "auchan",
-    "Vodafone": "vodafone",
-    "Mercedes-Benz": "mercedes",
-    "Virgin": "virgin",
-    "PepsiCo": "pepsi",
-    "Bayer": "bayer",
-    "Nestlé": "nestle",
-    "Zurich": "zurich",
-    "Outsystems": "outsystems",
-    "CGI": "cgi",
-    "Sanofi": "sanofi",
-    "JCDecaux": "jcdecaux",
-    "Takeda": "takeda",
-    "Century 21": "century21"
-  };
-
-  // Simple Icons are always 24x24 square SVGs. 
-  // Wide logos (like Coca-Cola) have a lot of empty vertical space inside that square.
-  // We use CSS transform scale to make them visually larger and fill the grid cell properly.
-  const scaleMap: Record<string, string> = {
-    "Coca-Cola": "scale-[2.5]",
-    "Jeep": "scale-[2.2]",
-    "Virgin": "scale-[2.2]",
-    "Nestlé": "scale-[2.2]",
-    "JCDecaux": "scale-[2]",
-    "Sanofi": "scale-[1.8]",
-    "Outsystems": "scale-[1.8]",
-    "CGI": "scale-[1.8]",
-    "Century 21": "scale-[1.8]",
-    "Takeda": "scale-[1.5]",
-    "Auchan": "scale-[1.4]",
-    "Vodafone": "scale-[1.4]",
-    "Mercedes-Benz": "scale-[1.5]",
-    "PepsiCo": "scale-[1.4]",
-    "Bayer": "scale-[1.4]",
-    "Zurich": "scale-[1.4]",
-  };
-
-  const slug = simpleIconsMap[name];
-  // Fetch pre-colored white SVGs directly from Simple Icons CDN
-  const src = slug ? `https://cdn.simpleicons.org/${slug}/white` : null;
-  const scaleClass = scaleMap[name] || "scale-125";
-
   return (
     <div className="relative w-full h-full flex items-center justify-center">
-      {src && !imgError ? (
+      {client.logo && !imgError ? (
         <img 
-          src={src} 
-          alt={name} 
-          className={`w-12 h-12 md:w-16 md:h-16 object-contain opacity-50 group-hover:opacity-100 transition-all duration-500 relative z-10 ${scaleClass}`}
+          src={client.logo} 
+          alt={client.name} 
+          className="max-h-16 max-w-[90%] object-contain opacity-50 group-hover:opacity-100 transition-opacity duration-500 drop-shadow-[0_0_2px_rgba(255,255,255,0.5)] filter brightness-[1.5] contrast-[1.2]"
           onError={() => setImgError(true)}
+          referrerPolicy="no-referrer"
         />
       ) : (
-        <CustomWordmark text={name} />
+        <div className="w-full h-full flex items-center justify-center px-2">
+          <span className="font-sans font-bold text-[10px] tracking-[0.15em] uppercase text-center opacity-50 group-hover:opacity-100 group-hover:text-white transition-all duration-500 leading-tight break-words">
+            {client.name}
+          </span>
+        </div>
       )}
     </div>
   );
@@ -290,14 +248,14 @@ export default function Home() {
               >
                 {CLIENTS.slice(0, 12).map((client, i) => (
                   <motion.div 
-                    key={client}
+                    key={client.name}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: i * 0.05 }}
                     className="aspect-[2/1] bg-[#050505] border-r border-b border-white/5 flex items-center justify-center p-8 hover:bg-white/[0.02] transition-colors duration-500 group relative overflow-hidden"
                   >
                     <div className="absolute inset-0 bg-gradient-to-b from-brand/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <ClientLogo name={client} />
+                    <ClientLogo client={client} />
                   </motion.div>
                 ))}
               </motion.div>
@@ -311,14 +269,14 @@ export default function Home() {
               >
                 {CLIENTS.map((client, i) => (
                   <motion.div 
-                    key={client}
+                    key={client.name}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: i * 0.02 }}
                     className="aspect-[3/2] bg-[#050505] border-r border-b border-white/5 flex items-center justify-center p-4 hover:bg-white/[0.02] transition-colors duration-500 group relative overflow-hidden"
                   >
                     <div className="absolute inset-0 bg-gradient-to-b from-brand/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <ClientLogo name={client} />
+                    <ClientLogo client={client} />
                   </motion.div>
                 ))}
               </motion.div>
@@ -357,10 +315,10 @@ export default function Home() {
             <br />
             O futuro não espera.
           </p>
-          <Link to="/contactos" className="group relative inline-flex items-center justify-center px-12 py-5 bg-white text-black font-sans text-sm tracking-widest uppercase font-medium overflow-hidden rounded-full transition-transform hover:scale-105">
+          <a href="mailto:geral@rsb.pt" className="group relative inline-flex items-center justify-center px-12 py-5 bg-white text-black font-sans text-sm tracking-widest uppercase font-medium overflow-hidden rounded-full transition-transform hover:scale-105">
             <div className="absolute inset-0 bg-brand translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-in-out" />
-            <span className="relative z-10 group-hover:text-white transition-colors duration-500">Falar com um Especialista</span>
-          </Link>
+            <span className="relative z-10 group-hover:text-white transition-colors duration-500">Fale Connosco</span>
+          </a>
         </div>
       </section>
     </div>

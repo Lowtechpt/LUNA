@@ -12,10 +12,12 @@ export default function Contact() {
       <div className="absolute inset-0 atmosphere opacity-30 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <header className="mb-20 text-center">
-          <span className="text-technical text-brand mb-6 block">01 // CONTACT</span>
+          <span className="text-technical text-brand mb-6 block">01 // CONTACTO</span>
           <h1 className="text-cinematic text-5xl md:text-7xl mb-6">VENHA DIZER <span className="italic text-white/60">OLÁ!</span></h1>
           <p className="max-w-2xl mx-auto text-lg opacity-50 font-light font-sans">
-            Estamos prontos para elevar a sua marca ao próximo nível. 
+            Estamos prontos para elevar a sua marca ao próximo nível.
+          </p>
+          <p className="max-w-2xl mx-auto text-lg opacity-50 font-light font-sans">
             Visite-nos ou entre em contacto para uma demonstração.
           </p>
         </header>
@@ -26,25 +28,26 @@ export default function Contact() {
               <h2 className="text-cinematic text-2xl">Informações de Contacto</h2>
               
               <div className="space-y-6">
-                <div className="flex gap-6 items-center group">
-                  <div className="w-12 h-12 border border-white/10 rounded-sm flex items-center justify-center shrink-0 group-hover:border-brand transition-colors duration-500">
-                    <Phone size={18} className="text-brand" />
+                  <div className="flex gap-6 items-center group">
+                    <div className="w-12 h-12 border border-white/10 rounded-sm flex items-center justify-center shrink-0 group-hover:border-brand transition-colors duration-500">
+                      <Phone size={18} className="text-brand" />
+                    </div>
+                    <div>
+                      <p className="text-technical text-white/40 mb-1">Telefone</p>
+                      <a href="tel:+351223210450" className="font-sans text-lg font-light hover:text-brand transition-colors">+351 223 210 450</a>
+                      <p className="text-xs text-white/30 mt-1 font-sans">(Chamada para a rede fixa nacional)</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-technical text-white/40 mb-1">Telefone</p>
-                    <p className="font-sans text-lg font-light">+351 223 210 450</p>
-                  </div>
-                </div>
 
-                <div className="flex gap-6 items-center group">
-                  <div className="w-12 h-12 border border-white/10 rounded-sm flex items-center justify-center shrink-0 group-hover:border-brand transition-colors duration-500">
-                    <Mail size={18} className="text-brand" />
+                  <div className="flex gap-6 items-center group">
+                    <div className="w-12 h-12 border border-white/10 rounded-sm flex items-center justify-center shrink-0 group-hover:border-brand transition-colors duration-500">
+                      <Mail size={18} className="text-brand" />
+                    </div>
+                    <div>
+                      <p className="text-technical text-white/40 mb-1">Email</p>
+                      <a href="mailto:geral@rsb.pt" className="font-sans text-lg font-light hover:text-brand transition-colors">geral@rsb.pt</a>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-technical text-white/40 mb-1">Email</p>
-                    <p className="font-sans text-lg font-light">geral@rsb.pt</p>
-                  </div>
-                </div>
 
                 <div className="flex gap-6 items-center group">
                   <div className="w-12 h-12 border border-white/10 rounded-sm flex items-center justify-center shrink-0 group-hover:border-brand transition-colors duration-500">
@@ -113,9 +116,9 @@ export default function Contact() {
                 <label className="text-technical text-white/40">Mensagem</label>
                 <textarea rows={4} className="w-full bg-transparent border-b border-white/20 px-0 py-3 font-sans font-light focus:outline-none focus:border-brand transition-colors resize-none"></textarea>
               </div>
-              <button className="w-full py-5 border border-white/20 rounded-sm font-sans text-xs tracking-widest uppercase font-medium hover:border-brand hover:text-brand transition-all duration-500 mt-4">
+              <a href="mailto:geral@rsb.pt" className="w-full py-5 border border-white/20 rounded-sm font-sans text-xs tracking-widest uppercase font-medium hover:border-brand hover:text-brand transition-all duration-500 mt-4 text-center block">
                 Enviar Mensagem
-              </button>
+              </a>
             </form>
           </div>
         </div>

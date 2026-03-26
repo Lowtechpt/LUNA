@@ -30,15 +30,7 @@ export default function Solutions() {
         </header>
 
         {/* Categories Filter */}
-        <div className="flex flex-wrap gap-4 mb-16">
-          <button 
-            onClick={() => setActiveCategory(null)}
-            className={`px-6 py-3 rounded-full text-xs tracking-widest uppercase font-medium transition-all border ${
-              activeCategory === null ? "bg-white text-black border-white" : "border-white/10 hover:border-white/30 text-white/70"
-            }`}
-          >
-            Todos
-          </button>
+        <div className="flex flex-col md:flex-row flex-wrap items-start md:items-center gap-4 mb-16">
           {CATEGORIES.map((cat) => (
             <button 
               key={cat.id}
@@ -50,6 +42,14 @@ export default function Solutions() {
               {cat.name}
             </button>
           ))}
+          <button 
+            onClick={() => setActiveCategory(null)}
+            className={`px-6 py-3 rounded-full text-xs tracking-widest uppercase font-medium transition-all border ${
+              activeCategory === null ? "bg-white text-black border-white" : "border-white/10 hover:border-white/30 text-white/70"
+            }`}
+          >
+            Todos
+          </button>
         </div>
 
         {/* Products Grid */}
