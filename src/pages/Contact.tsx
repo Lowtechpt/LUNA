@@ -1,8 +1,31 @@
 import { motion } from "motion/react";
 import { MapPin, Phone, Mail, Globe } from "lucide-react";
 import { Helmet } from "react-helmet-async";
+import { useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 export default function Contact() {
+  const location = useLocation();
+  const [formData, setFormData] = useState({
+    name: "",
+    company: "",
+    email: "",
+    message: ""
+  });
+
+  useEffect(() => {
+    if (location.state?.message) {
+      setFormData(prev => ({ ...prev, message: location.state.message }));
+    }
+  }, [location.state]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const mailtoLink = `mailto:geral@rsb.pt?subject=Contacto via Website - ${formData.name}&body=Nome: ${formData.name}%0D%0AEmpresa: ${formData.company}%0D%0AEmail: ${formData.email}%0D%0A%0D%0AMensagem:%0D%0A${encodeURIComponent(formData.message)}`;
+
   return (
     <div className="pt-32 pb-32 bg-[#050505] text-white min-h-screen relative">
       <Helmet>
@@ -101,22 +124,49 @@ export default function Contact() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-3">
                   <label className="text-technical text-white/40">Nome</label>
-                  <input type="text" className="w-full bg-transparent border-b border-white/20 px-0 py-3 font-sans font-light focus:outline-none focus:border-brand transition-colors" />
+                  <input 
+                    type="text" 
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="w-full bg-transparent border-b border-white/20 px-0 py-3 font-sans font-light focus:outline-none focus:border-brand transition-colors" 
+                  />
                 </div>
                 <div className="space-y-3">
                   <label className="text-technical text-white/40">Empresa</label>
-                  <input type="text" className="w-full bg-transparent border-b border-white/20 px-0 py-3 font-sans font-light focus:outline-none focus:border-brand transition-colors" />
+                  <input 
+                    type="text" 
+                    name="company"
+                    value={formData.company}
+                    onChange={handleChange}
+                    className="w-full bg-transparent border-b border-white/20 px-0 py-3 font-sans font-light focus:outline-none focus:border-brand transition-colors" 
+                  />
                 </div>
               </div>
               <div className="space-y-3">
                 <label className="text-technical text-white/40">Email</label>
-                <input type="email" className="w-full bg-transparent border-b border-white/20 px-0 py-3 font-sans font-light focus:outline-none focus:border-brand transition-colors" />
+                <input 
+                  type="email" 
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full bg-transparent border-b border-white/20 px-0 py-3 font-sans font-light focus:outline-none focus:border-brand transition-colors" 
+                />
               </div>
               <div className="space-y-3">
                 <label className="text-technical text-white/40">Mensagem</label>
-                <textarea rows={4} className="w-full bg-transparent border-b border-white/20 px-0 py-3 font-sans font-light focus:outline-none focus:border-brand transition-colors resize-none"></textarea>
+                <textarea 
+                  rows={4} 
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="w-full bg-transparent border-b border-white/20 px-0 py-3 font-sans font-light focus:outline-none focus:border-brand transition-colors resize-none"
+                ></textarea>
               </div>
-              <a href="mailto:geral@rsb.pt" className="w-full py-5 border border-white/20 rounded-sm font-sans text-xs tracking-widest uppercase font-medium hover:border-brand hover:text-brand transition-all duration-500 mt-4 text-center block">
+              <a 
+                href={mailtoLink} 
+                className="w-full py-5 border border-white/20 rounded-sm font-sans text-xs tracking-widest uppercase font-medium hover:border-brand hover:text-brand transition-all duration-500 mt-4 text-center block"
+              >
                 Enviar Mensagem
               </a>
             </form>

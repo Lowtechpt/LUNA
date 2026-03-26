@@ -5,7 +5,7 @@ export interface Product {
   description: string;
   features?: string[];
   image: string;
-  videoUrl?: string;
+  videoUrls?: string[];
 }
 
 export interface Client {

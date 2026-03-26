@@ -1,12 +1,97 @@
 import { motion, AnimatePresence } from "motion/react";
-import { ChevronRight, Play, X } from "lucide-react";
+import { ChevronRight, ChevronLeft, Play, X } from "lucide-react";
 import { PRODUCTS, CATEGORIES } from "../constants";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
+import { Product } from "../types";
+
+const ProductCard = React.memo(({ product, i, onPlay }: { product: Product, i: number, onPlay: (p: Product) => void }) => {
+  return (
+    <motion.div 
+      key={product.id}
+      layout
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.4, delay: i * 0.05 }}
+      className="group glass-panel rounded-sm overflow-hidden flex flex-col h-full hover:bg-white/[0.02] transition-colors duration-500"
+    >
+      <div className="aspect-[4/3] overflow-hidden relative group/video">
+        {product.videoUrls && product.videoUrls.length > 0 ? (
+          <>
+            <iframe 
+              src={`${product.videoUrls[0]}&title=0&byline=0&portrait=0&controls=0&background=1&autoplay=1&loop=1&autopause=0`}
+              className="w-full h-full absolute inset-0 z-10 pointer-events-none scale-[1.15]"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture" 
+              title={product.title}
+            />
+            <div 
+              className="absolute inset-0 z-20 bg-black/10 group-hover/video:bg-black/40 transition-colors duration-300 flex items-center justify-center cursor-pointer"
+              onClick={() => onPlay(product)}
+            >
+              <div className="w-16 h-16 rounded-full bg-black/50 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white/80 group-hover/video:scale-110 group-hover/video:bg-brand group-hover/video:text-white group-hover/video:border-brand transition-all duration-300">
+                <Play size={24} className="ml-1" fill="currentColor" />
+              </div>
+              {product.videoUrls.length > 1 && (
+                <div className="absolute top-4 right-4 px-2 py-1 bg-brand text-[10px] font-bold rounded-sm uppercase tracking-wider">
+                  +{product.videoUrls.length - 1} Vídeos
+                </div>
+              )}
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
+            <img 
+              src={product.image} 
+              alt={product.title} 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2s] ease-out opacity-80 group-hover:opacity-100"
+              referrerPolicy="no-referrer"
+            />
+          </>
+        )}
+        <div className="absolute top-4 left-4 px-3 py-1 bg-black/80 backdrop-blur-md text-technical text-brand border border-white/10 z-30 pointer-events-none">
+          #{product.number}
+        </div>
+      </div>
+      <div className="p-8 flex flex-col flex-grow border-t border-white/5">
+        <div className="text-technical text-white/40 mb-4">
+          {CATEGORIES.find(c => c.id === product.categoryId)?.name}
+        </div>
+        <h3 className="text-cinematic text-2xl mb-4 group-hover:text-brand transition-colors duration-500">{product.title}</h3>
+        <p className="font-sans text-sm opacity-50 leading-relaxed mb-8 flex-grow font-light">{product.description}</p>
+        
+        <div className="space-y-3 mb-10">
+          {product.features?.map((f, idx) => (
+            <div key={idx} className="flex items-center gap-3 font-sans text-xs opacity-60 tracking-wide">
+              <div className="w-1 h-1 bg-brand rounded-full opacity-50" />
+              {f}
+            </div>
+          ))}
+        </div>
+
+        <Link 
+          to="/contactos" 
+          state={{ message: `Olá, gostaria de solicitar mais informações sobre o produto: ${product.title}.` }}
+          className="w-full py-4 border border-white/10 rounded-sm font-sans text-xs tracking-widest uppercase font-medium group-hover:border-brand group-hover:text-brand transition-all duration-500 flex items-center justify-center gap-3"
+        >
+          Solicitar Informação <ChevronRight size={14} />
+        </Link>
+      </div>
+    </motion.div>
+  );
+});
 
 export default function Solutions() {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
-  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+
+  const handlePlay = React.useCallback((p: Product) => {
+    setSelectedProduct(p);
+    setCurrentVideoIndex(0);
+  }, []);
 
   const filteredProducts = activeCategory 
     ? PRODUCTS.filter(p => p.categoryId === activeCategory)
@@ -55,86 +140,29 @@ export default function Solutions() {
         {/* Products Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProducts.map((product, i) => (
-            <motion.div 
+            <ProductCard 
               key={product.id}
-              layout
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: i * 0.05 }}
-              className="group glass-panel rounded-sm overflow-hidden flex flex-col h-full hover:bg-white/[0.02] transition-colors duration-500"
-            >
-              <div className="aspect-[4/3] overflow-hidden relative group/video">
-                {product.videoUrl ? (
-                  <>
-                    <iframe 
-                      src={`${product.videoUrl}&title=0&byline=0&portrait=0&controls=0&background=1`}
-                      className="w-full h-full absolute inset-0 z-10 pointer-events-none scale-[1.15]"
-                      frameBorder="0"
-                      allow="autoplay; fullscreen; picture-in-picture" 
-                      title={product.title}
-                    />
-                    <div 
-                      className="absolute inset-0 z-20 bg-black/10 group-hover/video:bg-black/40 transition-colors duration-300 flex items-center justify-center cursor-pointer"
-                      onClick={() => setSelectedVideo(product.videoUrl!)}
-                    >
-                      <div className="w-16 h-16 rounded-full bg-black/50 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white/80 group-hover/video:scale-110 group-hover/video:bg-brand group-hover/video:text-white group-hover/video:border-brand transition-all duration-300">
-                        <Play size={24} className="ml-1" fill="currentColor" />
-                      </div>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
-                    <img 
-                      src={product.image} 
-                      alt={product.title} 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2s] ease-out opacity-80 group-hover:opacity-100"
-                      referrerPolicy="no-referrer"
-                    />
-                  </>
-                )}
-                <div className="absolute top-4 left-4 px-3 py-1 bg-black/80 backdrop-blur-md text-technical text-brand border border-white/10 z-30 pointer-events-none">
-                  #{product.number}
-                </div>
-              </div>
-              <div className="p-8 flex flex-col flex-grow border-t border-white/5">
-                <div className="text-technical text-white/40 mb-4">
-                  {CATEGORIES.find(c => c.id === product.categoryId)?.name}
-                </div>
-                <h3 className="text-cinematic text-2xl mb-4 group-hover:text-brand transition-colors duration-500">{product.title}</h3>
-                <p className="font-sans text-sm opacity-50 leading-relaxed mb-8 flex-grow font-light">{product.description}</p>
-                
-                <div className="space-y-3 mb-10">
-                  {product.features?.map((f, idx) => (
-                    <div key={idx} className="flex items-center gap-3 font-sans text-xs opacity-60 tracking-wide">
-                      <div className="w-1 h-1 bg-brand rounded-full opacity-50" />
-                      {f}
-                    </div>
-                  ))}
-                </div>
-
-                <button className="w-full py-4 border border-white/10 rounded-sm font-sans text-xs tracking-widest uppercase font-medium group-hover:border-brand group-hover:text-brand transition-all duration-500 flex items-center justify-center gap-3">
-                  Solicitar Informação <ChevronRight size={14} />
-                </button>
-              </div>
-            </motion.div>
+              product={product}
+              i={i}
+              onPlay={handlePlay}
+            />
           ))}
         </div>
       </div>
 
       {/* Video Modal */}
       <AnimatePresence>
-        {selectedVideo && (
+        {selectedProduct && (
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-black/95 backdrop-blur-md"
-            onClick={() => setSelectedVideo(null)}
+            onClick={() => setSelectedProduct(null)}
           >
             <button 
               className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors z-50"
-              onClick={() => setSelectedVideo(null)}
+              onClick={() => setSelectedProduct(null)}
             >
               <X size={32} />
             </button>
@@ -143,16 +171,44 @@ export default function Solutions() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="w-full max-w-6xl aspect-video bg-black rounded-xl overflow-hidden shadow-2xl border border-white/10 relative"
+              className="w-full max-w-6xl bg-black rounded-xl overflow-hidden shadow-2xl border border-white/10 relative p-4"
               onClick={(e) => e.stopPropagation()}
             >
-              <iframe 
-                src={`${selectedVideo}&autoplay=1&title=0&byline=0&portrait=0`}
-                className="w-full h-full absolute inset-0"
-                frameBorder="0"
-                allow="autoplay; fullscreen; picture-in-picture" 
-                allowFullScreen
-              />
+              <div className="relative w-full h-full flex items-center justify-center">
+                {/* Previous Button */}
+                <button 
+                  className="absolute left-4 z-50 p-2 bg-black/50 rounded-full text-white hover:bg-brand transition-colors"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setCurrentVideoIndex((prev) => (prev === 0 ? selectedProduct.videoUrls!.length - 1 : prev - 1));
+                  }}
+                >
+                  <ChevronLeft size={32} />
+                </button>
+
+                {/* Video */}
+                <div className="w-full h-full aspect-video">
+                  <iframe 
+                    key={selectedProduct.videoUrls![currentVideoIndex]}
+                    src={`${selectedProduct.videoUrls![currentVideoIndex]}&autoplay=1&title=0&byline=0&portrait=0&autopause=0`}
+                    className="w-full h-full"
+                    frameBorder="0"
+                    allow="autoplay; fullscreen; picture-in-picture" 
+                    allowFullScreen
+                  />
+                </div>
+
+                {/* Next Button */}
+                <button 
+                  className="absolute right-4 z-50 p-2 bg-black/50 rounded-full text-white hover:bg-brand transition-colors"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setCurrentVideoIndex((prev) => (prev === selectedProduct.videoUrls!.length - 1 ? 0 : prev + 1));
+                  }}
+                >
+                  <ChevronRight size={32} />
+                </button>
+              </div>
             </motion.div>
           </motion.div>
         )}

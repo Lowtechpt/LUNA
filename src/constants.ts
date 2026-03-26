@@ -22,7 +22,19 @@ export const PRODUCTS: (Product & { categoryId: string })[] = [
     description: "Solução com tecnologia de ventoinha LED de holograma capaz de projetar imagens, vídeos, textos e logótipos animados a flutuar no ar, criando uma experiência visual imersiva de alta definição.",
     features: ["Diâmetro: 70cm, 85cm ou 115cm", "Brilho: 1800 cd/m²", "Ângulo de visão: 160º", "Ativação via App"],
     image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=800",
-    videoUrl: "https://player.vimeo.com/video/918374058?h=9ed7cc8d63"
+    videoUrls: [
+      "https://player.vimeo.com/video/918374058?h=9ed7cc8d63",
+      "https://player.vimeo.com/video/809870702?h=604862fb81",
+      "https://player.vimeo.com/video/753049331?h=511f70b7c5",
+      "https://player.vimeo.com/video/1009133423?h=558fee89ab",
+      "https://player.vimeo.com/video/993997653?h=d5e5f8560d",
+      "https://player.vimeo.com/video/647270771?h=83f1152421",
+      "https://player.vimeo.com/video/647270559?h=b6bbd11d60",
+      "https://player.vimeo.com/video/455642273?h=ec210af553",
+      "https://player.vimeo.com/video/455642119?h=3a922fc110",
+      "https://player.vimeo.com/video/224867194?h=195709ba6a",
+      "https://player.vimeo.com/video/656704815?h=3beeace4e7"
+    ]
   },
   {
     id: "holograma-suspenso-portatil",
@@ -32,7 +44,7 @@ export const PRODUCTS: (Product & { categoryId: string })[] = [
     description: "Versão portátil do holograma suspenso com proteção acrílica para maior segurança e mobilidade.",
     features: ["Diâmetro: 40cm", "Proteção acrílica transparente", "Fácil transporte", "Alto brilho e nitidez"],
     image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800",
-    videoUrl: "https://player.vimeo.com/video/676310916?h=7128d6b30f"
+    videoUrls: ["https://player.vimeo.com/video/676310916?h=7128d6b30f", "https://player.vimeo.com/video/515775039?h=9cd9a920eb", "https://player.vimeo.com/video/410830984?h=adfab068d3"]
   },
   {
     id: "mochila-holograma",
@@ -42,7 +54,11 @@ export const PRODUCTS: (Product & { categoryId: string })[] = [
     description: "Combine a tecnologia de hologramas 3D com a portabilidade de uma mochila prática e resistente.",
     features: ["Diâmetro: 50cm", "Bateria interna de longa duração", "Mobilidade total", "Impacto imediato em movimento"],
     image: "https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&q=80&w=800",
-    videoUrl: "https://player.vimeo.com/video/1171617026?h=166f56b49b"
+    videoUrls: [
+      "https://player.vimeo.com/video/1171617026?h=166f56b49b",
+      "https://player.vimeo.com/video/993999763?h=bdcb402bc9",
+      "https://player.vimeo.com/video/386205310?h=8672056006"
+    ]
   },
   {
     id: "holobox",
@@ -52,7 +68,16 @@ export const PRODUCTS: (Product & { categoryId: string })[] = [
     description: "Display LED Transparente que oferece uma experiência holográfica única, onde a pessoa ou o objeto aparece dentro da caixa.",
     features: ["Qualidade 4K", "Ecrã Touchscreen", "Profundidade tridimensional", "Transmissões ao vivo"],
     image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800",
-    videoUrl: "https://player.vimeo.com/video/816637083?h=fc374e5504"
+    videoUrls: [
+      "https://player.vimeo.com/video/816637083?h=fc374e5504",
+      "https://player.vimeo.com/video/902216819?h=d59105cc98",
+      "https://player.vimeo.com/video/901112764?h=94d1741bd3",
+      "https://player.vimeo.com/video/1171595373?h=9764a2ca77",
+      "https://player.vimeo.com/video/994015037?h=0366b6ae5c",
+      "https://player.vimeo.com/video/1076438359?h=47bc0e50d2",
+      "https://player.vimeo.com/video/1171594777?h=a9c3a458de",
+      "https://player.vimeo.com/video/902770712?h=4b76478adc"
+    ]
   },
   {
     id: "vapor-agua",
@@ -62,7 +87,16 @@ export const PRODUCTS: (Product & { categoryId: string })[] = [
     description: "Combina a projeção de vídeo com uma fina cortina de vapor, criando um efeito visual surpreendente.",
     features: ["Vapor seco (não molha)", "Interação tátil", "Efeito imersivo", "Área: 2.20m x 2m"],
     image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=800",
-    videoUrl: "https://player.vimeo.com/video/781903412?h=7e25ef5793"
+    videoUrls: [
+      "https://player.vimeo.com/video/781903412?h=7e25ef5793",
+      "https://player.vimeo.com/video/994004899?h=0786877c67",
+      "https://player.vimeo.com/video/1171600293?h=ae02e448c4",
+      "https://player.vimeo.com/video/243154646?h=eaab361562",
+      "https://player.vimeo.com/video/1130985278?h=014f464404",
+      "https://player.vimeo.com/video/367096413?h=b956b4961f",
+      "https://player.vimeo.com/video/768058522?h=88f4647e36",
+      "https://player.vimeo.com/video/808380973?h=0c91625482"
+    ]
   },
   {
     id: "balcao-vapor",
@@ -72,7 +106,7 @@ export const PRODUCTS: (Product & { categoryId: string })[] = [
     description: "Versão compacta da tecnologia de vapor de água, ideal para destacar objetos menores.",
     features: ["Área: 80cm x 60cm", "Qualidade nítida", "Efeito diferenciador", "Proximidade com o público"],
     image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=800",
-    videoUrl: "https://player.vimeo.com/video/387484523?h=33eb2a0768"
+    videoUrls: ["https://player.vimeo.com/video/387484523?h=33eb2a0768"]
   },
   {
     id: "ecra-transparente",
@@ -82,7 +116,11 @@ export const PRODUCTS: (Product & { categoryId: string })[] = [
     description: "Display que permite visualizar o produto real através do ecrã digital interativo.",
     features: ["32 ou 49 Polegadas", "Multitouch", "Fusão real/virtual", "Design versátil"],
     image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800",
-    videoUrl: "https://player.vimeo.com/video/160545248?h=f72b5c8ec0"
+    videoUrls: [
+      "https://player.vimeo.com/video/160545248?h=f72b5c8ec0",
+      "https://player.vimeo.com/video/223765968?h=9fb63c96e6",
+      "https://player.vimeo.com/video/781557630?h=8daec6cca2"
+    ]
   },
   {
     id: "led-wall-transparente",
@@ -92,7 +130,16 @@ export const PRODUCTS: (Product & { categoryId: string })[] = [
     description: "Solução ideal para montras e eventos sem bloquear a visibilidade do espaço.",
     features: ["3m x 2m ou 4m x 2m", "Estrutura translúcida", "Animações dinâmicas", "Não bloqueia luz"],
     image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800",
-    videoUrl: "https://player.vimeo.com/video/366654693?h=87bafcc827"
+    videoUrls: [
+      "https://player.vimeo.com/video/366654693?h=87bafcc827",
+      "https://player.vimeo.com/video/941972515?h=25e4703c11",
+      "https://player.vimeo.com/video/809812557?h=9a7b1b2ee8",
+      "https://player.vimeo.com/video/994007395?h=381ca5213a",
+      "https://player.vimeo.com/video/224902240?h=58a26367bd",
+      "https://player.vimeo.com/video/901908668?h=ab3c731c80",
+      "https://player.vimeo.com/video/1021749800?h=b713a547ea",
+      "https://player.vimeo.com/video/752160572?h=99ef28c06d"
+    ]
   },
   {
     id: "led-wall-flexivel",
@@ -102,7 +149,7 @@ export const PRODUCTS: (Product & { categoryId: string })[] = [
     description: "LED Wall de alta qualidade disponível em versões retangular, curva ou flexível 3D.",
     features: ["Resolução P 2.6mm", "Imagens vibrantes", "Versátil e impactante", "Qualquer contexto"],
     image: "https://images.unsplash.com/photo-1540575861501-7cf05a4b125a?auto=format&fit=crop&q=80&w=800",
-    videoUrl: "https://player.vimeo.com/video/224903352?h=c803b8a735"
+    videoUrls: ["https://player.vimeo.com/video/224903352?h=c803b8a735"]
   },
   {
     id: "cortina-holografica",
@@ -112,7 +159,16 @@ export const PRODUCTS: (Product & { categoryId: string })[] = [
     description: "Holograma em grande escala para palcos, permitindo efeitos que interagem com elementos reais.",
     features: ["Até 10m x 5m", "Transparência total", "Toque futurista", "Integração com live performance"],
     image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=800",
-    videoUrl: "https://player.vimeo.com/video/913683007?h=230bd2f371"
+    videoUrls: [
+      "https://player.vimeo.com/video/913683007?h=230bd2f371",
+      "https://player.vimeo.com/video/345493893?h=da8d2e7e41",
+      "https://player.vimeo.com/video/376968297?h=702a524a22",
+      "https://player.vimeo.com/video/595441155?h=3732a1f8de",
+      "https://player.vimeo.com/video/350881506?h=56e2f8c5ae",
+      "https://player.vimeo.com/video/345493869?h=045651e874",
+      "https://player.vimeo.com/video/812420618?h=b0918b1eff",
+      "https://player.vimeo.com/video/410826093?h=24036511ac"
+    ]
   },
   {
     id: "vitrina-holografica",
@@ -122,7 +178,12 @@ export const PRODUCTS: (Product & { categoryId: string })[] = [
     description: "Exposição que combina o impacto emocional do holograma com a presença física do produto.",
     features: ["22'' (três faces)", "Integração de objetos reais", "Reforço de identidade", "Design elegante"],
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
-    videoUrl: "https://player.vimeo.com/video/160530712?h=45b9aee5ce"
+    videoUrls: [
+      "https://player.vimeo.com/video/160530712?h=45b9aee5ce",
+      "https://player.vimeo.com/video/808376740?h=4bb6816672",
+      "https://player.vimeo.com/video/323262046?h=4080aadec3",
+      "https://player.vimeo.com/video/701204142?h=02194eca55"
+    ]
   },
   {
     id: "promotor-virtual",
@@ -132,7 +193,10 @@ export const PRODUCTS: (Product & { categoryId: string })[] = [
     description: "Solução inovadora que permite a comunicação constante com o público através de silhueta interativa.",
     features: ["Apresentação dinâmica", "Animações personalizadas", "Interação contínua", "Memorável"],
     image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=800",
-    videoUrl: "https://player.vimeo.com/video/162118788?h=79b18d6299"
+    videoUrls: [
+      "https://player.vimeo.com/video/162118788?h=79b18d6299",
+      "https://player.vimeo.com/video/641466646?h=fda1345aac"
+    ]
   },
   {
     id: "ecra-holograma-3d",
@@ -142,7 +206,10 @@ export const PRODUCTS: (Product & { categoryId: string })[] = [
     description: "Experiências tridimensionais cativantes sem necessidade de óculos 3D.",
     features: ["8 e 16 polegadas", "Estereoscopia sem óculos", "Fusão virtual/real", "Impacto visual imediato"],
     image: "https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&q=80&w=800",
-    videoUrl: "https://player.vimeo.com/video/684489018?h=e99f56e265"
+    videoUrls: [
+      "https://player.vimeo.com/video/684489018?h=e99f56e265",
+      "https://player.vimeo.com/video/682961080?h=437c4c44f7"
+    ]
   },
   {
     id: "oculos-360-vr",
@@ -151,8 +218,8 @@ export const PRODUCTS: (Product & { categoryId: string })[] = [
     title: "Óculos 360º VR",
     description: "Visualização interativa e imersiva de conteúdos e filmes em 360º.",
     features: ["Conteúdos personalizados", "Imersão total", "Exploração detalhada", "Experiência única"],
-    image: "https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?auto=format&fit=crop&q=80&w=800",
-    videoUrl: "https://player.vimeo.com/video/223765452?h=25a99d96c7"
+    image: "https://rsb.pt/wp-content/uploads/2024/07/MysticInvest_QSP_RSB_5.jpg",
+    videoUrls: ["https://player.vimeo.com/video/223765452?h=25a99d96c7"]
   },
   {
     id: "realidade-aumentada",
@@ -162,7 +229,11 @@ export const PRODUCTS: (Product & { categoryId: string })[] = [
     description: "Experiências interativas que sobrepõem elementos virtuais ao mundo real.",
     features: ["Brochuras interativas", "Mapas interativos", "Ativação em papel/chão", "Personalizado"],
     image: "https://images.unsplash.com/photo-1592477387300-70b449f27862?auto=format&fit=crop&q=80&w=800",
-    videoUrl: "https://player.vimeo.com/video/438400617?h=3608134343"
+    videoUrls: [
+      "https://player.vimeo.com/video/438400617?h=3608134343",
+      "https://player.vimeo.com/video/395750842?h=fd379be915",
+      "https://player.vimeo.com/video/323239550?h=d8c23bc1f4"
+    ]
   },
   {
     id: "modulo-levitacao",
@@ -172,7 +243,7 @@ export const PRODUCTS: (Product & { categoryId: string })[] = [
     description: "Utiliza forças magnéticas para levitar uma plataforma estável exibindo artigos.",
     features: ["Até 1kg", "Design clean e futurista", "Levitação até 6cm", "Sofisticação"],
     image: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&q=80&w=800",
-    videoUrl: "https://player.vimeo.com/video/160676085?h=2d5fc42b15"
+    videoUrls: ["https://player.vimeo.com/video/160676085?h=2d5fc42b15"]
   },
   {
     id: "video-brochuras",
@@ -182,7 +253,11 @@ export const PRODUCTS: (Product & { categoryId: string })[] = [
     description: "Campanhas de marketing onde o filme é reproduzido automaticamente ao abrir a brochura.",
     features: ["Normal / Caixa / Holograma", "Controlo de volume", "Recarregável USB", "Design personalizado"],
     image: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&q=80&w=800",
-    videoUrl: "https://player.vimeo.com/video/474144524?h=f90cb01f3f"
+    videoUrls: [
+      "https://player.vimeo.com/video/474144524?h=f90cb01f3f",
+      "https://player.vimeo.com/video/470705112?h=787afd6806",
+      "https://player.vimeo.com/video/223766660?h=2dbb88471d"
+    ]
   },
   {
     id: "mupi-digital",
@@ -192,7 +267,10 @@ export const PRODUCTS: (Product & { categoryId: string })[] = [
     description: "Experiência interativa de grande impacto com acesso a software e internet.",
     features: ["55 Polegadas", "Totalmente personalizável", "Ponto de contacto único", "Multitouch"],
     image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800",
-    videoUrl: "https://player.vimeo.com/video/957127710?h=256f0b7bb2"
+    videoUrls: [
+      "https://player.vimeo.com/video/957127710?h=256f0b7bb2",
+      "https://player.vimeo.com/video/943612973?h=d69f0ac069"
+    ]
   },
   {
     id: "mesa-digital",
@@ -202,7 +280,7 @@ export const PRODUCTS: (Product & { categoryId: string })[] = [
     description: "Transforma qualquer apresentação numa experiência digital colaborativa.",
     features: ["50 Polegadas", "Multitouch alta precisão", "Design moderno", "Colaborativo"],
     image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=800",
-    videoUrl: "https://player.vimeo.com/video/938157676?h=336f1bfef6"
+    videoUrls: ["https://player.vimeo.com/video/938157676?h=336f1bfef6"]
   },
   {
     id: "pelicula-alta-reflexao",
@@ -212,7 +290,7 @@ export const PRODUCTS: (Product & { categoryId: string })[] = [
     description: "Transforma qualquer apresentação numa experiência visual imersiva através de reflexão.",
     features: ["Reflexão estratégica", "Ilusão de flutuação", "Transmissões em direto", "Surpreendente"],
     image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=800",
-    videoUrl: "https://player.vimeo.com/video/243569021?h=8cacab57c2"
+    videoUrls: ["https://player.vimeo.com/video/243569021?h=8cacab57c2"]
   },
   {
     id: "pelicula-retroprojectada",
@@ -222,7 +300,7 @@ export const PRODUCTS: (Product & { categoryId: string })[] = [
     description: "Permite projetar qualquer imagem em vidro ou acrílico transformando-os em ecrãs dinâmicos.",
     features: ["Alta definição", "Flexível e cativante", "Imagens nítidas", "Efeito inovador"],
     image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800",
-    videoUrl: "https://player.vimeo.com/video/320279778?h=1f5fdb5d6e"
+    videoUrls: ["https://player.vimeo.com/video/320279778?h=1f5fdb5d6e"]
   },
   {
     id: "piramide-holograma",
@@ -232,7 +310,7 @@ export const PRODUCTS: (Product & { categoryId: string })[] = [
     description: "Transforma qualquer smartphone ou tablet numa janela para o futuro.",
     features: ["Quatro faces transparentes", "Compacta e impactante", "Efeito 3D fascinante", "Cativante"],
     image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800",
-    videoUrl: "https://player.vimeo.com/video/403711067?h=a92abe16b2"
+    videoUrls: ["https://player.vimeo.com/video/403711067?h=a92abe16b2"]
   },
   {
     id: "ecra-prateleira",
@@ -242,7 +320,10 @@ export const PRODUCTS: (Product & { categoryId: string })[] = [
     description: "Transforma prateleiras comuns em poderosos pontos de comunicação digital.",
     features: ["Design discreto", "Wi-Fi embutido", "Atualização em tempo real", "Impactante"],
     image: "https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?auto=format&fit=crop&q=80&w=800",
-    videoUrl: "https://player.vimeo.com/video/400837255?h=f43b613ea9"
+    videoUrls: [
+      "https://player.vimeo.com/video/400837255?h=f43b613ea9",
+      "https://player.vimeo.com/video/515775039?h=9cd9a920eb"
+    ]
   },
   {
     id: "ecra-gama-profissional",
@@ -252,7 +333,7 @@ export const PRODUCTS: (Product & { categoryId: string })[] = [
     description: "Ecrãs de alta qualidade concebidos para desempenho contínuo.",
     features: ["Full HD ou UHD", "Com/Sem Touchscreen", "Wi-Fi integrado", "Versátil"],
     image: "https://images.unsplash.com/photo-1542744094-24638eff58bb?auto=format&fit=crop&q=80&w=800",
-    videoUrl: "https://player.vimeo.com/video/353710284?h=2b94462acf"
+    videoUrls: ["https://player.vimeo.com/video/353710284?h=2b94462acf"]
   },
   {
     id: "video-mapping",
@@ -262,7 +343,18 @@ export const PRODUCTS: (Product & { categoryId: string })[] = [
     description: "Transforma qualquer superfície num espetáculo visual mapeado em 3D.",
     features: ["Sem distorções", "Narrativas imersivas", "Ilusões óticas", "Qualquer superfície"],
     image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=800",
-    videoUrl: "https://player.vimeo.com/video/543776898?h=c1f7554827"
+    videoUrls: [
+      "https://player.vimeo.com/video/543776898?h=c1f7554827",
+      "https://player.vimeo.com/video/410826093?h=24036511ac",
+      "https://player.vimeo.com/video/160554058?h=530131ad72",
+      "https://player.vimeo.com/video/1171333364?h=c64f99b584",
+      "https://player.vimeo.com/video/261856446?h=2c425360cf",
+      "https://player.vimeo.com/video/423034331?h=39231a540f",
+      "https://player.vimeo.com/video/577981127?h=3f3deac494",
+      "https://player.vimeo.com/video/994012091?h=8a1d78fc24",
+      "https://player.vimeo.com/video/543776849?h=c18ece24c6",
+      "https://player.vimeo.com/video/913683007?h=230bd2f371"
+    ]
   },
   {
     id: "scan-3d-360",
@@ -272,7 +364,7 @@ export const PRODUCTS: (Product & { categoryId: string })[] = [
     description: "Viagem virtual imersiva realista que permite explorar ambientes em 4K.",
     features: ["Navegação virtual", "Integrado em web", "Conteúdos interativos", "Realismo 4K"],
     image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&q=80&w=800",
-    videoUrl: "https://player.vimeo.com/video/412431159?h=65b18e8029"
+    videoUrls: ["https://player.vimeo.com/video/412431159?h=65b18e8029"]
   },
   {
     id: "producao-conteudos",
