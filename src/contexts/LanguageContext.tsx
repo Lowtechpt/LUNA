@@ -128,8 +128,8 @@ export const translations = {
     
     // Home
     'home.hero.subtitle': 'WELCOME TO LUNA BY RSB',
-    'home.hero.title1': 'It is scientific,',
-    'home.hero.title2': 'but it is no longer fiction.',
+    'home.hero.title1': 'It\'s scientific,',
+    'home.hero.title2': 'but no longer fiction.',
     'home.hero.desc1': 'is a line of equipment idealized and commercialized exclusively by RSB.',
     'home.hero.desc2': 'Multimedia, holographic and three-dimensional technology with strong visual impact.',
     'home.hero.cta': 'Explore Solutions',

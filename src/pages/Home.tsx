@@ -304,8 +304,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
           <span className="text-technical text-brand mb-8 block">03 // {t('home.cta.subtitle')}</span>
           <h2 className="text-cinematic text-5xl md:text-8xl mb-10">
-            {t('home.cta.title1')} <br />
-            <span className="italic text-white/60">{t('home.cta.title2')}</span>
+            {t('home.cta.title1')} <span className="italic text-white/60">{t('home.cta.title2')}</span>
           </h2>
           <p className="font-sans text-base md:text-lg opacity-50 font-light mb-16 max-w-xl mx-auto">
             {t('home.cta.desc1')} 
