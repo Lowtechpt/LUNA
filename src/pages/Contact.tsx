@@ -2,10 +2,12 @@ import { motion } from "motion/react";
 import { MapPin, Phone, Mail, Globe } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { useLanguage } from "../contexts/LanguageContext";
 
 export default function Contact() {
   const location = useLocation();
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     company: "",
@@ -35,20 +37,20 @@ export default function Contact() {
       <div className="absolute inset-0 atmosphere opacity-30 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <header className="mb-20 text-center">
-          <span className="text-technical text-brand mb-6 block">01 // CONTACTO</span>
-          <h1 className="text-cinematic text-5xl md:text-7xl mb-6">VENHA DIZER <span className="italic text-white/60">OLÁ!</span></h1>
+          <span className="text-technical text-brand mb-6 block">{t('contact.subtitle')}</span>
+          <h1 className="text-cinematic text-5xl md:text-7xl mb-6">{t('contact.title1')} <span className="italic text-white/60">{t('contact.title2')}</span></h1>
           <p className="max-w-2xl mx-auto text-lg opacity-50 font-light font-sans">
-            Estamos prontos para elevar a sua marca ao próximo nível.
+            {t('contact.desc1')}
           </p>
           <p className="max-w-2xl mx-auto text-lg opacity-50 font-light font-sans">
-            Visite-nos ou entre em contacto para uma demonstração.
+            {t('contact.desc2')}
           </p>
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div className="space-y-8">
             <div className="glass-panel p-10 rounded-sm space-y-8">
-              <h2 className="text-cinematic text-2xl">Informações de Contacto</h2>
+              <h2 className="text-cinematic text-2xl">{t('contact.info.title')}</h2>
               
               <div className="space-y-6">
                   <div className="flex gap-6 items-center group">
@@ -56,9 +58,9 @@ export default function Contact() {
                       <Phone size={18} className="text-brand" />
                     </div>
                     <div>
-                      <p className="text-technical text-white/40 mb-1">Telefone</p>
+                      <p className="text-technical text-white/40 mb-1">{t('contact.info.phone')}</p>
                       <a href="tel:+351223210450" className="font-sans text-lg font-light hover:text-brand transition-colors">+351 223 210 450</a>
-                      <p className="text-xs text-white/30 mt-1 font-sans">(Chamada para a rede fixa nacional)</p>
+                      <p className="text-xs text-white/30 mt-1 font-sans">{t('contact.info.phone_desc')}</p>
                     </div>
                   </div>
 
@@ -67,7 +69,7 @@ export default function Contact() {
                       <Mail size={18} className="text-brand" />
                     </div>
                     <div>
-                      <p className="text-technical text-white/40 mb-1">Email</p>
+                      <p className="text-technical text-white/40 mb-1">{t('contact.info.email')}</p>
                       <a href="mailto:geral@rsb.pt" className="font-sans text-lg font-light hover:text-brand transition-colors">geral@rsb.pt</a>
                     </div>
                   </div>
@@ -77,7 +79,7 @@ export default function Contact() {
                     <Globe size={18} className="text-brand" />
                   </div>
                   <div>
-                    <p className="text-technical text-white/40 mb-1">Website</p>
+                    <p className="text-technical text-white/40 mb-1">{t('contact.info.website')}</p>
                     <p className="font-sans text-lg font-light">www.rsb.pt</p>
                   </div>
                 </div>
@@ -85,11 +87,11 @@ export default function Contact() {
             </div>
 
             <div className="glass-panel p-10 rounded-sm space-y-8">
-              <h2 className="text-cinematic text-2xl">As Nossas Sedes</h2>
+              <h2 className="text-cinematic text-2xl">{t('contact.hq.title')}</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-3">
                   <div className="flex items-center gap-3 text-brand text-technical">
-                    <MapPin size={14} /> Porto
+                    <MapPin size={14} /> {t('contact.hq.porto')}
                   </div>
                   <p className="font-sans text-sm opacity-50 leading-relaxed font-light">
                     Rua do Covelo nº232,<br />
@@ -98,7 +100,7 @@ export default function Contact() {
                 </div>
                 <div className="space-y-3">
                   <div className="flex items-center gap-3 text-brand text-technical">
-                    <MapPin size={14} /> Lisboa
+                    <MapPin size={14} /> {t('contact.hq.lisbon')}
                   </div>
                   <p className="font-sans text-sm opacity-50 leading-relaxed font-light">
                     Av. Gago Coutinho, N.77 – 2B,<br />
@@ -107,7 +109,7 @@ export default function Contact() {
                 </div>
                 <div className="space-y-3">
                   <div className="flex items-center gap-3 text-brand text-technical">
-                    <MapPin size={14} /> Austrália
+                    <MapPin size={14} /> {t('contact.hq.australia')}
                   </div>
                   <p className="font-sans text-sm opacity-50 leading-relaxed font-light">
                     B5 297 West Coast HWY,<br />
@@ -119,11 +121,11 @@ export default function Contact() {
           </div>
 
           <div className="glass-panel p-10 rounded-sm">
-            <h2 className="text-cinematic text-2xl mb-10">Envie-nos uma Mensagem</h2>
+            <h2 className="text-cinematic text-2xl mb-10">{t('contact.form.title')}</h2>
             <form className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-3">
-                  <label className="text-technical text-white/40">Nome</label>
+                  <label className="text-technical text-white/40">{t('contact.form.name')}</label>
                   <input 
                     type="text" 
                     name="name"
@@ -133,7 +135,7 @@ export default function Contact() {
                   />
                 </div>
                 <div className="space-y-3">
-                  <label className="text-technical text-white/40">Empresa</label>
+                  <label className="text-technical text-white/40">{t('contact.form.company')}</label>
                   <input 
                     type="text" 
                     name="company"
@@ -144,7 +146,7 @@ export default function Contact() {
                 </div>
               </div>
               <div className="space-y-3">
-                <label className="text-technical text-white/40">Email</label>
+                <label className="text-technical text-white/40">{t('contact.form.email')}</label>
                 <input 
                   type="email" 
                   name="email"
@@ -154,7 +156,7 @@ export default function Contact() {
                 />
               </div>
               <div className="space-y-3">
-                <label className="text-technical text-white/40">Mensagem</label>
+                <label className="text-technical text-white/40">{t('contact.form.message')}</label>
                 <textarea 
                   rows={4} 
                   name="message"
@@ -167,7 +169,7 @@ export default function Contact() {
                 href={mailtoLink} 
                 className="w-full py-5 border border-white/20 rounded-sm font-sans text-xs tracking-widest uppercase font-medium hover:border-brand hover:text-brand transition-all duration-500 mt-4 text-center block"
               >
-                Enviar Mensagem
+                {t('contact.form.submit')}
               </a>
             </form>
           </div>

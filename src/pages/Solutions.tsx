@@ -1,12 +1,15 @@
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronRight, ChevronLeft, Play, X } from "lucide-react";
-import { PRODUCTS, CATEGORIES } from "../constants";
+import { getCategories, getProducts } from "../constants";
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Product } from "../types";
+import { useLanguage } from "../contexts/LanguageContext";
 
-const ProductCard = React.memo(({ product, i, onPlay }: { product: Product, i: number, onPlay: (p: Product) => void }) => {
+const ProductCard = React.memo(({ product, i, onPlay, categories }: { product: Product & { categoryId: string }, i: number, onPlay: (p: Product & { categoryId: string }) => void, categories: any[] }) => {
+  const { t } = useLanguage();
+  
   return (
     <motion.div 
       key={product.id}
@@ -35,7 +38,7 @@ const ProductCard = React.memo(({ product, i, onPlay }: { product: Product, i: n
               </div>
               {product.videoUrls.length > 1 && (
                 <div className="absolute top-4 right-4 px-2 py-1 bg-brand text-[10px] font-bold rounded-sm uppercase tracking-wider">
-                  +{product.videoUrls.length - 1} Vídeos
+                  +{product.videoUrls.length - 1} {t('solutions.card.videos')}
                 </div>
               )}
             </div>
@@ -57,7 +60,7 @@ const ProductCard = React.memo(({ product, i, onPlay }: { product: Product, i: n
       </div>
       <div className="p-8 flex flex-col flex-grow border-t border-white/5">
         <div className="text-technical text-white/40 mb-4">
-          {CATEGORIES.find(c => c.id === product.categoryId)?.name}
+          {categories.find(c => c.id === product.categoryId)?.name}
         </div>
         <h3 className="text-cinematic text-2xl mb-4 group-hover:text-brand transition-colors duration-500">{product.title}</h3>
         <p className="font-sans text-sm opacity-50 leading-relaxed mb-8 flex-grow font-light">{product.description}</p>
@@ -73,10 +76,10 @@ const ProductCard = React.memo(({ product, i, onPlay }: { product: Product, i: n
 
         <Link 
           to="/contactos" 
-          state={{ message: `Olá, gostaria de solicitar mais informações sobre o produto: ${product.title}.` }}
+          state={{ message: `${t('contact.form.default_msg')} ${product.title}.` }}
           className="w-full py-4 border border-white/10 rounded-sm font-sans text-xs tracking-widest uppercase font-medium group-hover:border-brand group-hover:text-brand transition-all duration-500 flex items-center justify-center gap-3"
         >
-          Solicitar Informação <ChevronRight size={14} />
+          {t('solutions.card.request_info')} <ChevronRight size={14} />
         </Link>
       </div>
     </motion.div>
@@ -85,17 +88,21 @@ const ProductCard = React.memo(({ product, i, onPlay }: { product: Product, i: n
 
 export default function Solutions() {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<(Product & { categoryId: string }) | null>(null);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+  const { t, language } = useLanguage();
 
-  const handlePlay = React.useCallback((p: Product) => {
+  const categories = getCategories(language);
+  const products = getProducts(language);
+
+  const handlePlay = React.useCallback((p: Product & { categoryId: string }) => {
     setSelectedProduct(p);
     setCurrentVideoIndex(0);
   }, []);
 
   const filteredProducts = activeCategory 
-    ? PRODUCTS.filter(p => p.categoryId === activeCategory)
-    : PRODUCTS;
+    ? products.filter(p => p.categoryId === activeCategory)
+    : products;
 
   return (
     <div className="pt-32 pb-32 bg-[#050505] text-white min-h-screen relative">
@@ -106,17 +113,16 @@ export default function Solutions() {
       <div className="absolute inset-0 atmosphere opacity-30 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <header className="mb-20">
-          <span className="text-technical text-brand mb-6 block">01 // EQUIPAMENTOS</span>
-          <h1 className="text-cinematic text-5xl md:text-7xl mb-6">SOLUÇÕES <span className="italic text-white/60">DIGITAIS</span></h1>
+          <span className="text-technical text-brand mb-6 block">{t('solutions.subtitle')}</span>
+          <h1 className="text-cinematic text-5xl md:text-7xl mb-6">{t('solutions.title1')} <span className="italic text-white/60">{t('solutions.title2')}</span></h1>
           <p className="max-w-2xl text-lg opacity-50 font-light font-sans">
-            Explore a nossa gama completa de equipamentos inovadores. 
-            Desde hologramas suspensos a ecrãs de vapor, temos a solução ideal para o seu projeto.
+            {t('solutions.desc')}
           </p>
         </header>
 
         {/* Categories Filter */}
         <div className="flex flex-col md:flex-row flex-wrap items-start md:items-center gap-4 mb-16">
-          {CATEGORIES.map((cat) => (
+          {categories.map((cat) => (
             <button 
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
@@ -133,7 +139,7 @@ export default function Solutions() {
               activeCategory === null ? "bg-white text-black border-white" : "border-white/10 hover:border-white/30 text-white/70"
             }`}
           >
-            Todos
+            {t('solutions.filter.all')}
           </button>
         </div>
 
@@ -145,6 +151,7 @@ export default function Solutions() {
               product={product}
               i={i}
               onPlay={handlePlay}
+              categories={categories}
             />
           ))}
         </div>

@@ -4,6 +4,7 @@ import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { CLIENTS } from "../constants";
+import { useLanguage } from "../contexts/LanguageContext";
 
 const CustomWordmark = ({ text }: { text: string }) => {
   const length = text.length;
@@ -87,6 +88,7 @@ const ClientLogo = ({ client }: { client: { name: string, logo: string } }) => {
 export default function Home() {
   const heroRef = useRef(null);
   const [showAllClients, setShowAllClients] = useState(false);
+  const { t } = useLanguage();
   
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -138,19 +140,18 @@ export default function Home() {
               </span>
             </div>
             <h1 className="text-cinematic text-5xl md:text-8xl lg:text-9xl mb-8">
-              <span className="italic font-light text-white/80">É científica,</span><br />
-              <span className="font-semibold tracking-tight">mas já não é ficção.</span>
+              <span className="italic font-light text-white/80">{t('home.hero.title1')}</span><br />
+              <span className="font-semibold tracking-tight">{t('home.hero.title2')}</span>
             </h1>
             
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="max-w-3xl mx-auto text-sm md:text-base opacity-50 font-sans leading-relaxed mb-12"
+              className="max-w-3xl mx-auto text-sm md:text-base opacity-80 font-sans leading-relaxed mb-12"
             >
-              <span className="font-logo font-bold tracking-widest text-brand opacity-100">LUNA</span> é uma linha de equipamentos idealizada e comercializada exclusivamente pela RSB. 
-              <br />
-              Tecnologia multimédia, holográfica e tridimensional de forte impacto visual.
+              <span className="text-brand font-bold">LUNA</span> {t('home.hero.desc1')}<br />
+              {t('home.hero.desc2')}
             </motion.p>
           </motion.div>
         </div>
@@ -163,7 +164,7 @@ export default function Home() {
         >
           <Link to="/solucoes" className="group relative px-8 py-4 bg-transparent text-white font-sans text-sm tracking-widest uppercase flex items-center justify-center gap-3 overflow-hidden border border-white/20 rounded-full hover:border-brand transition-colors duration-500">
             <div className="absolute inset-0 bg-brand translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-in-out" />
-            <span className="relative z-10 font-medium">Explorar Soluções</span>
+            <span className="relative z-10 font-medium">{t('home.hero.cta')}</span>
             <ArrowRight size={16} className="relative z-10 group-hover:translate-x-1 transition-transform" />
           </Link>
         </motion.div>
@@ -174,9 +175,9 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-[#0a0505] to-[#050505] z-0" />
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
           {[
-            { icon: <Zap size={20} className="text-brand" />, title: "Impacto Imediato", desc: "Soluções desenhadas para captar a atenção em segundos, transformando espaços comuns em palcos de inovação." },
-            { icon: <Layers size={20} className="text-brand" />, title: "Multidimensional", desc: "Hologramas e projeções que desafiam a perceção física, quebrando a barreira entre o digital e o real." },
-            { icon: <Cpu size={20} className="text-brand" />, title: "Vanguarda Tecnológica", desc: "Equipamentos exclusivos com as mais recentes inovações em ótica e engenharia de software." }
+            { icon: <Zap size={20} className="text-brand" />, title: t('home.features.f1.title'), desc: t('home.features.f1.desc') },
+            { icon: <Layers size={20} className="text-brand" />, title: t('home.features.f2.title'), desc: t('home.features.f2.desc') },
+            { icon: <Cpu size={20} className="text-brand" />, title: t('home.features.f3.title'), desc: t('home.features.f3.desc') }
           ].map((feature, i) => (
             <motion.div 
               key={i}
@@ -203,9 +204,9 @@ export default function Home() {
         <div className="absolute inset-0 atmosphere opacity-50" />
         <div className="max-w-7xl mx-auto px-6 relative z-10 grid grid-cols-1 md:grid-cols-3 gap-16 text-center">
           {[
-            { label: "Projetos", value: "700+" },
-            { label: "Soluções", value: "27" },
-            { label: "Anos RSB", value: "10" }
+            { label: t('home.stats.projects'), value: "700+" },
+            { label: t('home.stats.clients'), value: "27" },
+            { label: t('home.stats.years'), value: "10" }
           ].map((stat, i) => (
             <motion.div 
               key={i} 
@@ -226,14 +227,10 @@ export default function Home() {
       <section className="py-40 bg-[#050505] relative overflow-hidden">
         <div className="absolute inset-0 atmosphere opacity-30" />
         <div className="max-w-7xl mx-auto px-6 text-center mb-24 relative z-10">
-          <span className="text-technical text-brand mb-6 block">02 // CLIENTES</span>
+          <span className="text-technical text-brand mb-6 block">02 // {t('home.clients.title')}</span>
           <h2 className="text-cinematic text-5xl md:text-7xl mb-12">
-            Marcas que confiam na <span className="italic font-logo text-white/60">LUNA</span>
+            {t('home.clients.subtitle')}
           </h2>
-          <p className="font-sans text-base opacity-50 font-light mb-12 max-w-2xl mx-auto">
-            A nossa tecnologia dá vida às campanhas das marcas mais exigentes do mundo. 
-            Uma seleção de parceiros que escolheram a inovação.
-          </p>
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-6">
@@ -291,9 +288,9 @@ export default function Home() {
             >
               <span className="relative z-10 flex items-center gap-3">
                 {showAllClients ? (
-                  <><X size={14} /> Reduzir Lista</>
+                  <><X size={14} /> {t('home.clients.btn.less')}</>
                 ) : (
-                  <><Grid size={14} /> Ver Todas as Marcas</>
+                  <><Grid size={14} /> {t('home.clients.btn.more')}</>
                 )}
               </span>
             </button>
@@ -305,19 +302,19 @@ export default function Home() {
       <section className="py-40 relative overflow-hidden">
         <div className="absolute inset-0 z-0 atmosphere opacity-80" />
         <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-          <span className="text-technical text-brand mb-8 block">03 // INICIAR</span>
+          <span className="text-technical text-brand mb-8 block">03 // {t('home.cta.subtitle')}</span>
           <h2 className="text-cinematic text-5xl md:text-8xl mb-10">
-            Dê vida à sua marca <br />
-            <span className="italic text-white/60">com a LUNA.</span>
+            {t('home.cta.title1')} <br />
+            <span className="italic text-white/60">{t('home.cta.title2')}</span>
           </h2>
           <p className="font-sans text-base md:text-lg opacity-50 font-light mb-16 max-w-xl mx-auto">
-            Estamos prontos para transformar a sua visão em realidade tecnológica. 
+            {t('home.cta.desc1')} 
             <br />
-            O futuro não espera.
+            {t('home.cta.desc2')}
           </p>
           <a href="mailto:geral@rsb.pt" className="group relative inline-flex items-center justify-center px-12 py-5 bg-white text-black font-sans text-sm tracking-widest uppercase font-medium overflow-hidden rounded-full transition-transform hover:scale-105">
             <div className="absolute inset-0 bg-brand translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-in-out" />
-            <span className="relative z-10 group-hover:text-white transition-colors duration-500">Fale Connosco</span>
+            <span className="relative z-10 group-hover:text-white transition-colors duration-500">{t('home.cta.btn')}</span>
           </a>
         </div>
       </section>

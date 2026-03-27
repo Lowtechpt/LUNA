@@ -1,4 +1,5 @@
 import { Product } from "./types";
+import { translations } from "./contexts/LanguageContext";
 
 export interface Category {
   id: string;
@@ -6,12 +7,34 @@ export interface Category {
   description: string;
 }
 
+// Helper function to get translated categories
+export const getCategories = (lang: 'pt' | 'en'): Category[] => {
+  if (lang === 'en') {
+    return [
+      { id: "hologramas", name: "Holograms", description: "3D projection technology that creates high-impact floating images." },
+      { id: "ecras-displays", name: "Screens & Displays", description: "Transparent, flexible, and high-definition visualization solutions." },
+      { id: "interatividade-vr", name: "Interactivity & VR", description: "Immersive experiences that allow users to interact with content." },
+      { id: "solucoes-especiais", name: "Special Solutions", description: "Unique equipment and services for memorable brand activations." }
+    ];
+  }
+  return CATEGORIES;
+};
+
+// Keep original for fallback/initial state
 export const CATEGORIES: Category[] = [
   { id: "hologramas", name: "Hologramas", description: "Tecnologia de projeção 3D que cria imagens flutuantes de alto impacto." },
   { id: "ecras-displays", name: "Ecrãs e Displays", description: "Soluções de visualização transparentes, flexíveis e de alta definição." },
   { id: "interatividade-vr", name: "Interatividade e VR", description: "Experiências imersivas que permitem ao utilizador interagir com o conteúdo." },
   { id: "solucoes-especiais", name: "Soluções Especiais", description: "Equipamentos e serviços únicos para ativações de marca memoráveis." }
 ];
+
+// Helper function to get translated products
+export const getProducts = (lang: 'pt' | 'en'): (Product & { categoryId: string })[] => {
+  if (lang === 'en') {
+    return PRODUCTS_EN;
+  }
+  return PRODUCTS;
+};
 
 export const PRODUCTS: (Product & { categoryId: string })[] = [
   {
@@ -374,6 +397,171 @@ export const PRODUCTS: (Product & { categoryId: string })[] = [
     description: "Equipa multidisciplinar para criação de vídeos, áudio, hologramas e animações.",
     features: ["2D/3D/360ºVR", "Software à medida", "Linguagem apelativa", "Criatividade total"],
     image: "https://rsb.pt/wp-content/uploads/2025/04/Captura-de-ecra-2025-04-10-181250.png"
+  }
+];
+
+export const PRODUCTS_EN: (Product & { categoryId: string })[] = [
+  {
+    ...PRODUCTS[0],
+    title: "Suspended Hologram",
+    description: "Solution with LED fan hologram technology capable of projecting animated images, videos, texts, and logos floating in the air, creating an immersive high-definition visual experience.",
+    features: ["Diameter: 70cm, 85cm or 115cm", "Brightness: 1800 cd/m²", "Viewing angle: 160º", "App activation"]
+  },
+  {
+    ...PRODUCTS[1],
+    title: "Portable Suspended Hologram",
+    description: "Portable version of the suspended hologram with acrylic protection for greater safety and mobility.",
+    features: ["Diameter: 40cm", "Transparent acrylic protection", "Easy transport", "High brightness and sharpness"]
+  },
+  {
+    ...PRODUCTS[2],
+    title: "Suspended Hologram Backpack",
+    description: "Combine 3D hologram technology with the portability of a practical and resistant backpack.",
+    features: ["Diameter: 50cm", "Long-lasting internal battery", "Total mobility", "Immediate impact on the move"]
+  },
+  {
+    ...PRODUCTS[3],
+    title: "Holobox",
+    description: "Transparent LED Display that offers a unique holographic experience, where the person or object appears inside the box.",
+    features: ["4K Quality", "Touchscreen Display", "Three-dimensional depth", "Live broadcasts"]
+  },
+  {
+    ...PRODUCTS[4],
+    title: "Water Vapor Hologram Screen",
+    description: "Combines video projection with a fine curtain of vapor, creating a surprising visual effect.",
+    features: ["Dry vapor (does not wet)", "Tactile interaction", "Immersive effect", "Area: 2.20m x 2m"]
+  },
+  {
+    ...PRODUCTS[5],
+    title: "Water Vapor Screen Counter",
+    description: "Compact version of the water vapor technology, ideal for highlighting smaller objects.",
+    features: ["Area: 80cm x 60cm", "Sharp quality", "Differentiating effect", "Proximity to the public"]
+  },
+  {
+    ...PRODUCTS[6],
+    title: "Transparent Screen",
+    description: "Display that allows viewing the real product through the interactive digital screen.",
+    features: ["32 or 49 Inches", "Multitouch", "Real/virtual fusion", "Versatile design"]
+  },
+  {
+    ...PRODUCTS[7],
+    title: "Transparent LED Wall",
+    description: "Ideal solution for storefronts and events without blocking the visibility of the space.",
+    features: ["3m x 2m or 4m x 2m", "Translucent structure", "Dynamic animations", "Does not block light"]
+  },
+  {
+    ...PRODUCTS[8],
+    title: "3D Flexible LED Wall",
+    description: "High-quality LED Wall available in rectangular, curved, or 3D flexible versions.",
+    features: ["P 2.6mm Resolution", "Vibrant images", "Versatile and impactful", "Any context"]
+  },
+  {
+    ...PRODUCTS[9],
+    title: "Holographic Curtain & XL",
+    description: "Large-scale hologram for stages, allowing effects that interact with real elements.",
+    features: ["Up to 10m x 5m", "Total transparency", "Futuristic touch", "Integration with live performance"]
+  },
+  {
+    ...PRODUCTS[10],
+    title: "Holographic Showcase",
+    description: "Exhibition that combines the emotional impact of the hologram with the physical presence of the product.",
+    features: ["22'' (three faces)", "Integration of real objects", "Identity reinforcement", "Elegant design"]
+  },
+  {
+    ...PRODUCTS[11],
+    title: "Virtual Promoter",
+    description: "Innovative solution that allows constant communication with the public through an interactive silhouette.",
+    features: ["Dynamic presentation", "Custom animations", "Continuous interaction", "Memorable"]
+  },
+  {
+    ...PRODUCTS[12],
+    title: "3D Hologram Screen",
+    description: "Captivating three-dimensional experiences without the need for 3D glasses.",
+    features: ["8 and 16 inches", "Glasses-free stereoscopy", "Virtual/real fusion", "Immediate visual impact"]
+  },
+  {
+    ...PRODUCTS[13],
+    title: "360º VR Glasses",
+    description: "Interactive and immersive viewing of 360º content and films.",
+    features: ["Custom content", "Total immersion", "Detailed exploration", "Unique experience"]
+  },
+  {
+    ...PRODUCTS[14],
+    title: "Augmented Reality",
+    description: "Interactive experiences that overlay virtual elements on the real world.",
+    features: ["Interactive brochures", "Interactive maps", "Paper/floor activation", "Customized"]
+  },
+  {
+    ...PRODUCTS[15],
+    title: "Levitation Module",
+    description: "Uses magnetic forces to levitate a stable platform displaying items.",
+    features: ["Up to 1kg", "Clean and futuristic design", "Levitation up to 6cm", "Sophistication"]
+  },
+  {
+    ...PRODUCTS[16],
+    title: "Video Brochures",
+    description: "Marketing campaigns where the film plays automatically when opening the brochure.",
+    features: ["Normal / Box / Hologram", "Volume control", "USB rechargeable", "Custom design"]
+  },
+  {
+    ...PRODUCTS[17],
+    title: "Interactive Digital Mupi",
+    description: "High-impact interactive experience with access to software and the internet.",
+    features: ["55 Inches", "Fully customizable", "Single point of contact", "Multitouch"]
+  },
+  {
+    ...PRODUCTS[18],
+    title: "Multitouch Digital Table",
+    description: "Transforms any presentation into a collaborative digital experience.",
+    features: ["50 Inches", "High precision multitouch", "Modern design", "Collaborative"]
+  },
+  {
+    ...PRODUCTS[19],
+    title: "High Reflection Holographic Film",
+    description: "Transforms any presentation into an immersive visual experience through reflection.",
+    features: ["Strategic reflection", "Illusion of floating", "Live broadcasts", "Surprising"]
+  },
+  {
+    ...PRODUCTS[20],
+    title: "Rear-Projected Holographic Film",
+    description: "Allows projecting any image onto glass or acrylic, transforming them into dynamic screens.",
+    features: ["High definition", "Flexible and captivating", "Sharp images", "Innovative effect"]
+  },
+  {
+    ...PRODUCTS[21],
+    title: "Holographic Pyramid",
+    description: "Transforms any smartphone or tablet into a window to the future.",
+    features: ["Four transparent faces", "Compact and impactful", "Fascinating 3D effect", "Captivating"]
+  },
+  {
+    ...PRODUCTS[22],
+    title: "Retail Shelf Screen",
+    description: "Transforms ordinary shelves into powerful digital communication points.",
+    features: ["Discreet design", "Built-in Wi-Fi", "Real-time update", "Impactful"]
+  },
+  {
+    ...PRODUCTS[23],
+    title: "24/7 Professional Range Screen",
+    description: "High-quality screens designed for continuous performance.",
+    features: ["Full HD or UHD", "With/Without Touchscreen", "Integrated Wi-Fi", "Versatile"]
+  },
+  {
+    ...PRODUCTS[24],
+    title: "Video Mapping",
+    description: "Transforms any surface into a 3D mapped visual spectacle.",
+    features: ["No distortions", "Immersive narratives", "Optical illusions", "Any surface"]
+  },
+  {
+    ...PRODUCTS[25],
+    title: "3D 360º Scan",
+    description: "Realistic immersive virtual journey that allows exploring environments in 4K.",
+    features: ["Virtual navigation", "Web integrated", "Interactive content", "4K Realism"]
+  },
+  {
+    ...PRODUCTS[26],
+    title: "Content Production",
+    description: "Multidisciplinary team for creating videos, audio, holograms, and animations.",
+    features: ["2D/3D/360ºVR", "Custom software", "Appealing language", "Total creativity"]
   }
 ];
 

@@ -1,8 +1,10 @@
 import { MapPin, Phone, Mail, Globe, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import Logo from "./Logo";
+import { useLanguage } from "../contexts/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLanguage();
   return (
     <footer className="bg-black border-t border-white/5 pt-24 pb-12">
       <div className="max-w-7xl mx-auto px-6">
@@ -12,31 +14,30 @@ export default function Footer() {
               <Logo imgClassName="h-16 md:h-20" />
             </div>
             <p className="text-sm opacity-40 leading-relaxed">
-              Líderes em soluções digitais interativas e holográficas. 
-              Transformamos espaços e eventos em experiências memoráveis com tecnologia de vanguarda.
+              {t('footer.desc')}
             </p>
           </div>
 
           <div className="space-y-6">
-            <h4 className="font-bold text-sm uppercase tracking-widest">Localizações</h4>
+            <h4 className="font-bold text-sm uppercase tracking-widest">{t('footer.locations')}</h4>
             <div className="space-y-4 text-sm opacity-50">
               <div className="flex gap-3">
                 <MapPin size={18} className="shrink-0 text-brand" />
-                <p>Porto: Rua do Covelo nº232, 4200-238</p>
+                <p>{t('footer.porto')}</p>
               </div>
               <div className="flex gap-3">
                 <MapPin size={18} className="shrink-0 text-brand" />
-                <p>Lisboa: Av. Gago Coutinho, N.77-2B, 2700-405</p>
+                <p>{t('footer.lisbon')}</p>
               </div>
               <div className="flex gap-3">
                 <MapPin size={18} className="shrink-0 text-brand" />
-                <p>Austrália: Scarborough, 6019</p>
+                <p>{t('footer.australia')}</p>
               </div>
             </div>
           </div>
 
           <div className="space-y-6">
-            <h4 className="font-bold text-sm uppercase tracking-widest">Contactos</h4>
+            <h4 className="font-bold text-sm uppercase tracking-widest">{t('footer.contacts')}</h4>
             <div className="space-y-4 text-sm opacity-50">
               <div className="flex items-center gap-3">
                 <Phone size={18} className="text-brand" />
@@ -54,12 +55,12 @@ export default function Footer() {
           </div>
 
           <div className="space-y-6">
-            <h4 className="font-bold text-sm uppercase tracking-widest">Newsletter</h4>
-            <p className="text-sm opacity-40">Subscreva para receber as últimas inovações tecnológicas.</p>
+            <h4 className="font-bold text-sm uppercase tracking-widest">{t('footer.newsletter')}</h4>
+            <p className="text-sm opacity-40">{t('footer.newsletter_desc')}</p>
             <div className="flex gap-2">
               <input 
                 type="email" 
-                placeholder="O seu email" 
+                placeholder={t('footer.email_placeholder')}
                 aria-label="Endereço de email para newsletter"
                 className="bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-sm w-full focus:outline-none focus:border-brand"
               />
@@ -71,11 +72,11 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-center pt-12 border-t border-white/5 gap-6">
-          <p className="text-xs opacity-30">© 2026 LUNA by RSB. Todos os direitos reservados.</p>
+          <p className="text-xs opacity-30">{t('footer.rights')}</p>
           <div className="flex gap-8 text-xs opacity-30">
-            <Link to="/privacidade" className="hover:opacity-100 transition-opacity">Privacidade</Link>
-            <Link to="/termos" className="hover:opacity-100 transition-opacity">Termos</Link>
-            <Link to="/cookies" className="hover:opacity-100 transition-opacity">Cookies</Link>
+            <Link to="/privacidade" className="hover:opacity-100 transition-opacity">{t('footer.privacy')}</Link>
+            <Link to="/termos" className="hover:opacity-100 transition-opacity">{t('footer.terms')}</Link>
+            <Link to="/cookies" className="hover:opacity-100 transition-opacity">{t('footer.cookies')}</Link>
           </div>
         </div>
       </div>

@@ -3,16 +3,18 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import Logo from "./Logo";
+import { useLanguage } from "../contexts/LanguageContext";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const { language, setLanguage, t } = useLanguage();
 
   const navLinks = [
-    { name: "Início", path: "/" },
-    { name: "Soluções", path: "/solucoes" },
-    { name: "Tecnologia", path: "/tecnologia" },
-    { name: "Contactos", path: "/contactos" },
+    { name: t('nav.home'), path: "/" },
+    { name: t('nav.solutions'), path: "/solucoes" },
+    { name: t('nav.technology'), path: "/tecnologia" },
+    { name: t('nav.contact'), path: "/contactos" },
   ];
 
   return (
@@ -34,9 +36,23 @@ export default function Navbar() {
               {link.name}
             </Link>
           ))}
-          <a href="mailto:geral@rsb.pt" className="px-5 py-2 bg-white text-black text-sm font-bold rounded-full hover:bg-brand hover:text-white transition-all">
-            Pedir Orçamento
-          </a>
+          
+          <div className="flex items-center gap-2 ml-4 border-l border-white/20 pl-6">
+            <button 
+              onClick={() => setLanguage('pt')}
+              className={`transition-opacity hover:opacity-100 ${language === 'pt' ? 'opacity-100' : 'opacity-40'}`}
+              aria-label="Português"
+            >
+              <img src="https://flagcdn.com/w40/pt.png" alt="PT" className="w-6 h-auto rounded-sm" />
+            </button>
+            <button 
+              onClick={() => setLanguage('en')}
+              className={`transition-opacity hover:opacity-100 ${language === 'en' ? 'opacity-100' : 'opacity-40'}`}
+              aria-label="English"
+            >
+              <img src="https://flagcdn.com/w40/gb.png" alt="EN" className="w-6 h-auto rounded-sm" />
+            </button>
+          </div>
         </div>
 
         <button 
@@ -67,9 +83,22 @@ export default function Navbar() {
                   {link.name}
                 </Link>
               ))}
-              <a href="mailto:geral@rsb.pt" className="w-full py-4 bg-brand text-white font-bold rounded-xl flex items-center justify-center gap-2">
-                Pedir Orçamento <ChevronRight size={18} />
-              </a>
+              <div className="flex items-center gap-4 pt-4 border-t border-white/10">
+                <button 
+                  onClick={() => { setLanguage('pt'); setIsOpen(false); }}
+                  className={`flex items-center gap-2 transition-opacity ${language === 'pt' ? 'opacity-100' : 'opacity-40'}`}
+                >
+                  <img src="https://flagcdn.com/w40/pt.png" alt="PT" className="w-6 h-auto rounded-sm" />
+                  <span className="text-sm font-medium">Português</span>
+                </button>
+                <button 
+                  onClick={() => { setLanguage('en'); setIsOpen(false); }}
+                  className={`flex items-center gap-2 transition-opacity ${language === 'en' ? 'opacity-100' : 'opacity-40'}`}
+                >
+                  <img src="https://flagcdn.com/w40/gb.png" alt="EN" className="w-6 h-auto rounded-sm" />
+                  <span className="text-sm font-medium">English</span>
+                </button>
+              </div>
             </div>
           </motion.div>
         )}
