@@ -80,7 +80,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-technical text-white/40 mb-1">{t('contact.info.website')}</p>
-                    <p className="font-sans text-lg font-light">www.rsb.pt</p>
+                    <a href="https://www.rsb.pt" target="_blank" rel="noopener noreferrer" className="font-sans text-lg font-light hover:text-brand transition-colors">www.rsb.pt</a>
                   </div>
                 </div>
               </div>
@@ -116,6 +116,21 @@ export default function Contact() {
                     6019 Scarborough
                   </p>
                 </div>
+              </div>
+              
+              <div className="pt-8 border-t border-white/5 flex items-center gap-6">
+                <img 
+                  src="https://rsb.pt/wp-content/uploads/2023/12/Logo-RSB-inv_.png" 
+                  alt="RSB" 
+                  className="h-10 opacity-80" 
+                  referrerPolicy="no-referrer" 
+                />
+                <img 
+                  src="https://rsb.pt/wp-content/uploads/2021/04/RSB-513734082-Selo-TOP5-2025.png" 
+                  alt="Selo TOP 5 2025" 
+                  className="h-28 md:h-32 opacity-90" 
+                  referrerPolicy="no-referrer" 
+                />
               </div>
             </div>
           </div>

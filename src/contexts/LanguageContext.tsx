@@ -59,8 +59,8 @@ export const translations = {
     'tech.title1': 'A NOSSA',
     'tech.title2': 'TECNOLOGIA',
     'tech.desc': 'Descubra a tecnologia por trás das nossas soluções holográficas e como criamos experiências visuais inesquecíveis.',
-    'tech.hologram.title': 'Projeção Holográfica',
-    'tech.hologram.desc': 'A nossa tecnologia de projeção utiliza hélices LED de alta velocidade que, ao girar, criam a ilusão de imagens 3D flutuantes com um brilho excecional.',
+    'tech.hologram.title': 'Sistemas Holográficos',
+    'tech.hologram.desc': 'Os nossos sistemas holográficos utilizam tecnologias avançadas para criar a ilusão de imagens 3D suspensas no espaço, com elevado impacto visual. São soluções versáteis e envolventes, ideais para captar a atenção do público e valorizar qualquer ambiente.',
     'tech.hologram.f1': 'Alta Resolução 4K',
     'tech.hologram.f2': 'Sincronização Multi-Ecrã',
     'tech.hologram.f3': 'Controlo via Cloud',
@@ -114,9 +114,8 @@ export const translations = {
     'footer.newsletter': 'Newsletter',
     'footer.newsletter_desc': 'Subscreva para receber as nossas últimas novidades e projetos.',
     'footer.email_placeholder': 'O seu email',
-    'footer.rights': 'Todos os direitos reservados.',
+    'footer.rights': '© 2026 LUNA by RSB. Todos os direitos reservados.',
     'footer.privacy': 'Privacidade',
-    'footer.terms': 'Termos',
     'footer.cookies': 'Cookies'
   },
   en: {
@@ -167,8 +166,8 @@ export const translations = {
     'tech.title1': 'OUR',
     'tech.title2': 'TECHNOLOGY',
     'tech.desc': 'Discover the technology behind our holographic solutions and how we create unforgettable visual experiences.',
-    'tech.hologram.title': 'Holographic Projection',
-    'tech.hologram.desc': 'Our projection technology uses high-speed LED blades that, when spinning, create the illusion of floating 3D images with exceptional brightness.',
+    'tech.hologram.title': 'Holographic Systems',
+    'tech.hologram.desc': 'Our holographic systems use advanced technologies to create the illusion of 3D images suspended in space, with high visual impact. They are versatile and engaging solutions, ideal for capturing the public\'s attention and enhancing any environment.',
     'tech.hologram.f1': '4K High Resolution',
     'tech.hologram.f2': 'Multi-Screen Sync',
     'tech.hologram.f3': 'Cloud Control',
@@ -222,9 +221,8 @@ export const translations = {
     'footer.newsletter': 'Newsletter',
     'footer.newsletter_desc': 'Subscribe to receive our latest news and projects.',
     'footer.email_placeholder': 'Your email',
-    'footer.rights': 'All rights reserved.',
+    'footer.rights': '© 2026 LUNA by RSB. All rights reserved.',
     'footer.privacy': 'Privacy',
-    'footer.terms': 'Terms',
     'footer.cookies': 'Cookies'
   }
 };

@@ -46,6 +46,7 @@ export const PRODUCTS: (Product & { categoryId: string })[] = [
     features: ["Diâmetro: 70cm, 85cm ou 115cm", "Brilho: 1800 cd/m²", "Ângulo de visão: 160º", "Ativação via App"],
     image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=800",
     videoUrls: [
+      "https://player.vimeo.com/video/656704815?h=3beeace4e7",
       "https://player.vimeo.com/video/918374058?h=9ed7cc8d63",
       "https://player.vimeo.com/video/809870702?h=604862fb81",
       "https://player.vimeo.com/video/753049331?h=511f70b7c5",
@@ -55,8 +56,7 @@ export const PRODUCTS: (Product & { categoryId: string })[] = [
       "https://player.vimeo.com/video/647270559?h=b6bbd11d60",
       "https://player.vimeo.com/video/455642273?h=ec210af553",
       "https://player.vimeo.com/video/455642119?h=3a922fc110",
-      "https://player.vimeo.com/video/224867194?h=195709ba6a",
-      "https://player.vimeo.com/video/656704815?h=3beeace4e7"
+      "https://player.vimeo.com/video/224867194?h=195709ba6a"
     ]
   },
   {
@@ -111,11 +111,11 @@ export const PRODUCTS: (Product & { categoryId: string })[] = [
     features: ["Vapor seco (não molha)", "Interação tátil", "Efeito imersivo", "Área: 2.20m x 2m"],
     image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=800",
     videoUrls: [
+      "https://player.vimeo.com/video/1130985278?h=014f464404",
       "https://player.vimeo.com/video/781903412?h=7e25ef5793",
       "https://player.vimeo.com/video/994004899?h=0786877c67",
       "https://player.vimeo.com/video/1171600293?h=ae02e448c4",
       "https://player.vimeo.com/video/243154646?h=eaab361562",
-      "https://player.vimeo.com/video/1130985278?h=014f464404",
       "https://player.vimeo.com/video/367096413?h=b956b4961f",
       "https://player.vimeo.com/video/768058522?h=88f4647e36",
       "https://player.vimeo.com/video/808380973?h=0c91625482"
@@ -183,9 +183,9 @@ export const PRODUCTS: (Product & { categoryId: string })[] = [
     features: ["Até 10m x 5m", "Transparência total", "Toque futurista", "Integração com live performance"],
     image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=800",
     videoUrls: [
+      "https://player.vimeo.com/video/376968297?h=702a524a22",
       "https://player.vimeo.com/video/913683007?h=230bd2f371",
       "https://player.vimeo.com/video/345493893?h=da8d2e7e41",
-      "https://player.vimeo.com/video/376968297?h=702a524a22",
       "https://player.vimeo.com/video/595441155?h=3732a1f8de",
       "https://player.vimeo.com/video/350881506?h=56e2f8c5ae",
       "https://player.vimeo.com/video/345493869?h=045651e874",
@@ -361,16 +361,16 @@ export const PRODUCTS: (Product & { categoryId: string })[] = [
   {
     id: "video-mapping",
     number: "25",
-    categoryId: "solucoes-especiais",
+    categoryId: "hologramas",
     title: "Video Mapping",
     description: "Transforma qualquer superfície num espetáculo visual mapeado em 3D.",
     features: ["Sem distorções", "Narrativas imersivas", "Ilusões óticas", "Qualquer superfície"],
     image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=800",
     videoUrls: [
+      "https://player.vimeo.com/video/1171333364?h=c64f99b584",
       "https://player.vimeo.com/video/543776898?h=c1f7554827",
       "https://player.vimeo.com/video/410826093?h=24036511ac",
       "https://player.vimeo.com/video/160554058?h=530131ad72",
-      "https://player.vimeo.com/video/1171333364?h=c64f99b584",
       "https://player.vimeo.com/video/261856446?h=2c425360cf",
       "https://player.vimeo.com/video/423034331?h=39231a540f",
       "https://player.vimeo.com/video/577981127?h=3f3deac494",

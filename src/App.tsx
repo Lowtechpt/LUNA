@@ -12,6 +12,8 @@ import Home from "./pages/Home";
 import Solutions from "./pages/Solutions";
 import Technology from "./pages/Technology";
 import Contact from "./pages/Contact";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import CookiesPolicy from "./pages/CookiesPolicy";
 import { LanguageProvider } from "./contexts/LanguageContext";
 
 function ScrollToTop() {
@@ -28,7 +30,7 @@ export default function App() {
       <LanguageProvider>
         <Router>
           <ScrollToTop />
-          <div className="min-h-screen bg-black text-white selection:bg-brand selection:text-white">
+          <div className="min-h-screen bg-black text-white selection:bg-brand selection:text-white relative">
             <Navbar />
             <main>
               <Routes>
@@ -36,6 +38,8 @@ export default function App() {
                 <Route path="/solucoes" element={<Solutions />} />
                 <Route path="/tecnologia" element={<Technology />} />
                 <Route path="/contactos" element={<Contact />} />
+                <Route path="/privacidade" element={<PrivacyPolicy />} />
+                <Route path="/cookies" element={<CookiesPolicy />} />
               </Routes>
             </main>
             <Footer />

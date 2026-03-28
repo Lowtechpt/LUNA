@@ -54,9 +54,6 @@ const ProductCard = React.memo(({ product, i, onPlay, categories }: { product: P
             />
           </>
         )}
-        <div className="absolute top-4 left-4 px-3 py-1 bg-black/80 backdrop-blur-md text-technical text-brand border border-white/10 z-30 pointer-events-none">
-          #{product.number}
-        </div>
       </div>
       <div className="p-8 flex flex-col flex-grow border-t border-white/5">
         <div className="text-technical text-white/40 mb-4">
@@ -122,6 +119,14 @@ export default function Solutions() {
 
         {/* Categories Filter */}
         <div className="flex flex-col md:flex-row flex-wrap items-start md:items-center gap-4 mb-16">
+          <button 
+            onClick={() => setActiveCategory(null)}
+            className={`px-6 py-3 rounded-full text-xs tracking-widest uppercase font-medium transition-all border ${
+              activeCategory === null ? "bg-white text-black border-white" : "border-white/10 hover:border-white/30 text-white/70"
+            }`}
+          >
+            {t('solutions.filter.all')}
+          </button>
           {categories.map((cat) => (
             <button 
               key={cat.id}
@@ -133,14 +138,6 @@ export default function Solutions() {
               {cat.name}
             </button>
           ))}
-          <button 
-            onClick={() => setActiveCategory(null)}
-            className={`px-6 py-3 rounded-full text-xs tracking-widest uppercase font-medium transition-all border ${
-              activeCategory === null ? "bg-white text-black border-white" : "border-white/10 hover:border-white/30 text-white/70"
-            }`}
-          >
-            {t('solutions.filter.all')}
-          </button>
         </div>
 
         {/* Products Grid */}
@@ -197,7 +194,7 @@ export default function Solutions() {
                 <div className="w-full h-full aspect-video">
                   <iframe 
                     key={selectedProduct.videoUrls![currentVideoIndex]}
-                    src={`${selectedProduct.videoUrls![currentVideoIndex]}&autoplay=1&title=0&byline=0&portrait=0&autopause=0`}
+                    src={`${selectedProduct.videoUrls![currentVideoIndex]}&autoplay=1&title=0&byline=0&portrait=0&autopause=0&loop=1`}
                     className="w-full h-full"
                     frameBorder="0"
                     allow="autoplay; fullscreen; picture-in-picture" 
