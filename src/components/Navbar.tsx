@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronRight } from "lucide-react";
+import { Menu, X, ChevronRight, ShoppingBag } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import Logo from "./Logo";
 import { useLanguage } from "../contexts/LanguageContext";
+import { useCart } from "../contexts/CartContext";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const { language, setLanguage, t } = useLanguage();
+  const { items } = useCart();
 
   const navLinks = [
     { name: t('nav.home'), path: "/" },
@@ -38,6 +40,18 @@ export default function Navbar() {
           ))}
           
           <div className="flex items-center gap-2 ml-4 border-l border-white/20 pl-6">
+            <Link 
+              to="/carrinho" 
+              className={`relative p-2 transition-all hover:text-brand ${location.pathname === '/carrinho' ? 'text-brand' : 'opacity-70 hover:opacity-100'}`}
+              aria-label={t('nav.cart')}
+            >
+              <ShoppingBag size={20} className={items.length > 0 ? "animate-pulse text-brand" : ""} />
+              {items.length > 0 && (
+                <span className="absolute -top-1 -right-1 bg-brand text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-[0_0_10px_rgba(255,99,33,0.5)]">
+                  {items.length}
+                </span>
+              )}
+            </Link>
             <button 
               onClick={() => setLanguage('pt')}
               className={`transition-opacity hover:opacity-100 ${language === 'pt' ? 'opacity-100' : 'opacity-40'}`}
@@ -84,6 +98,14 @@ export default function Navbar() {
                 </Link>
               ))}
               <div className="flex items-center gap-4 pt-4 border-t border-white/10">
+                <Link 
+                  to="/carrinho" 
+                  className="flex items-center gap-2 text-sm font-medium opacity-70 hover:opacity-100"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <ShoppingBag size={20} />
+                  <span>{t('nav.cart')} ({items.length})</span>
+                </Link>
                 <button 
                   onClick={() => { setLanguage('pt'); setIsOpen(false); }}
                   className={`flex items-center gap-2 transition-opacity ${language === 'pt' ? 'opacity-100' : 'opacity-40'}`}

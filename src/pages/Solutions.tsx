@@ -1,14 +1,17 @@
 import { motion, AnimatePresence } from "motion/react";
-import { ChevronRight, ChevronLeft, Play, X } from "lucide-react";
+import { ChevronRight, ChevronLeft, Play, X, ShoppingBag, ArrowRight } from "lucide-react";
 import { getCategories, getProducts } from "../constants";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Product } from "../types";
 import { useLanguage } from "../contexts/LanguageContext";
+import { useCart } from "../contexts/CartContext";
 
-const ProductCard = React.memo(({ product, i, onPlay, categories }: { product: Product & { categoryId: string }, i: number, onPlay: (p: Product & { categoryId: string }) => void, categories: any[] }) => {
+const ProductCard = React.memo(({ product, i, onPlay, onAdd, categories }: { product: Product & { categoryId: string }, i: number, onPlay: (p: Product & { categoryId: string }) => void, onAdd: (p: Product & { categoryId: string }) => void, categories: any[] }) => {
   const { t } = useLanguage();
+  const { isInCart } = useCart();
+  const inCart = isInCart(product.id);
   
   return (
     <motion.div 
@@ -71,13 +74,16 @@ const ProductCard = React.memo(({ product, i, onPlay, categories }: { product: P
           ))}
         </div>
 
-        <Link 
-          to="/contactos" 
-          state={{ message: `${t('contact.form.default_msg')} ${product.title}.` }}
-          className="w-full py-4 border border-white/10 rounded-sm font-sans text-xs tracking-widest uppercase font-medium group-hover:border-brand group-hover:text-brand transition-all duration-500 flex items-center justify-center gap-3"
+        <button 
+          onClick={() => onAdd(product)}
+          className={`w-full py-4 border rounded-sm font-sans text-xs tracking-widest uppercase font-medium transition-all duration-500 flex items-center justify-center gap-3 ${
+            inCart 
+              ? "border-brand bg-brand text-white" 
+              : "border-white/10 hover:border-brand hover:text-brand"
+          }`}
         >
-          {t('solutions.card.request_info')} <ChevronRight size={14} />
-        </Link>
+          {inCart ? t('solutions.card.added') : t('solutions.card.request_info')} <ChevronRight size={14} />
+        </button>
       </div>
     </motion.div>
   );
@@ -87,7 +93,26 @@ export default function Solutions() {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<(Product & { categoryId: string }) | null>(null);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+  const [showToast, setShowToast] = useState(false);
   const { t, language } = useLanguage();
+  const { toggleItem, isInCart } = useCart();
+
+  useEffect(() => {
+    if (showToast) {
+      const timer = setTimeout(() => setShowToast(false), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [showToast]);
+
+  const handleAddToCart = (product: Product & { categoryId: string }) => {
+    const wasInCart = isInCart(product.id);
+    toggleItem(product);
+    if (!wasInCart) {
+      setShowToast(true);
+    } else {
+      setShowToast(false);
+    }
+  };
 
   const categories = getCategories(language);
   const products = getProducts(language);
@@ -148,11 +173,42 @@ export default function Solutions() {
               product={product}
               i={i}
               onPlay={handlePlay}
+              onAdd={handleAddToCart}
               categories={categories}
             />
           ))}
         </div>
       </div>
+
+      {/* Toast Notification */}
+      <AnimatePresence>
+        {showToast && (
+          <motion.div 
+            initial={{ opacity: 0, y: 50, x: "-50%" }}
+            animate={{ opacity: 1, y: 0, x: "-50%" }}
+            exit={{ opacity: 0, y: 20, x: "-50%" }}
+            className="fixed bottom-10 left-1/2 z-[100] w-[90%] md:w-max md:max-w-4xl"
+          >
+            <div className="bg-brand text-white p-5 rounded-sm shadow-2xl flex items-center justify-between gap-8 border border-white/20 backdrop-blur-lg">
+              <div className="flex items-center gap-3">
+                <div className="bg-white/20 p-2 rounded-full">
+                  <ShoppingBag size={18} />
+                </div>
+                <div>
+                  <p className="text-xs md:text-sm font-bold uppercase tracking-widest">{t('solutions.toast.title')}</p>
+                  <p className="text-[10px] md:text-sm opacity-80">{t('solutions.toast.desc')}</p>
+                </div>
+              </div>
+              <Link 
+                to="/carrinho" 
+                className="bg-white text-brand px-6 py-3 rounded-sm text-[10px] md:text-xs font-bold uppercase tracking-tighter flex items-center gap-2 hover:bg-white/90 transition-colors whitespace-nowrap"
+              >
+                {t('nav.cart')} <ArrowRight size={12} />
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Video Modal */}
       <AnimatePresence>

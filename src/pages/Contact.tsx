@@ -12,6 +12,7 @@ export default function Contact() {
     name: "",
     company: "",
     email: "",
+    phone: "",
     message: ""
   });
 
@@ -26,7 +27,7 @@ export default function Contact() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const mailtoLink = `mailto:geral@rsb.pt?subject=Contacto via Website - ${formData.name}&body=Nome: ${formData.name}%0D%0AEmpresa: ${formData.company}%0D%0AEmail: ${formData.email}%0D%0A%0D%0AMensagem:%0D%0A${encodeURIComponent(formData.message)}`;
+  const mailtoLink = `mailto:geral@rsb.pt?subject=Contacto via Website - ${formData.name}&body=Nome: ${formData.name}%0D%0AEmpresa: ${formData.company}%0D%0AEmail: ${formData.email}%0D%0ATelefone: ${formData.phone}%0D%0A%0D%0AMensagem:%0D%0A${encodeURIComponent(formData.message)}`;
 
   return (
     <div className="pt-32 pb-32 bg-[#050505] text-white min-h-screen relative">
@@ -160,15 +161,27 @@ export default function Contact() {
                   />
                 </div>
               </div>
-              <div className="space-y-3">
-                <label className="text-technical text-white/40">{t('contact.form.email')}</label>
-                <input 
-                  type="email" 
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full bg-transparent border-b border-white/20 px-0 py-3 font-sans font-light focus:outline-none focus:border-brand transition-colors" 
-                />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="space-y-3">
+                  <label className="text-technical text-white/40">{t('contact.form.email')}</label>
+                  <input 
+                    type="email" 
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full bg-transparent border-b border-white/20 px-0 py-3 font-sans font-light focus:outline-none focus:border-brand transition-colors" 
+                  />
+                </div>
+                <div className="space-y-3">
+                  <label className="text-technical text-white/40">{t('contact.form.phone')}</label>
+                  <input 
+                    type="tel" 
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full bg-transparent border-b border-white/20 px-0 py-3 font-sans font-light focus:outline-none focus:border-brand transition-colors" 
+                  />
+                </div>
               </div>
               <div className="space-y-3">
                 <label className="text-technical text-white/40">{t('contact.form.message')}</label>

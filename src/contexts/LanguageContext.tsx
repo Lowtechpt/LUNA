@@ -17,6 +17,7 @@ export const translations = {
     'nav.solutions': 'Soluções',
     'nav.technology': 'Tecnologia',
     'nav.contact': 'Contactos',
+    'nav.cart': 'Cesto',
     
     // Home
     'home.hero.subtitle': 'BEM-VINDO À LUNA BY RSB',
@@ -51,8 +52,11 @@ export const translations = {
     'solutions.title2': 'DIGITAIS',
     'solutions.desc': 'Explore a nossa gama completa de equipamentos inovadores. Desde hologramas suspensos a ecrãs de vapor, temos a solução ideal para o seu projeto.',
     'solutions.filter.all': 'Todos',
-    'solutions.card.request_info': 'Solicitar Informação',
+    'solutions.card.request_info': 'Pedir Informações',
+    'solutions.card.added': 'No Cesto de Informações',
     'solutions.card.videos': 'Vídeos',
+    'solutions.toast.title': 'ADICIONADO AO CESTO',
+    'solutions.toast.desc': 'O produto foi adicionado à sua lista de pedidos de informação.',
     
     // Technology
     'tech.subtitle': '02 // INOVAÇÃO',
@@ -100,6 +104,7 @@ export const translations = {
     'contact.form.name': 'Nome',
     'contact.form.company': 'Empresa',
     'contact.form.email': 'Email',
+    'contact.form.phone': 'Telefone',
     'contact.form.message': 'Mensagem',
     'contact.form.submit': 'Enviar Mensagem',
     'contact.form.default_msg': 'Olá, gostaria de solicitar mais informações sobre o produto:',
@@ -116,7 +121,22 @@ export const translations = {
     'footer.email_placeholder': 'O seu email',
     'footer.rights': '© 2026 LUNA by RSB. Todos os direitos reservados.',
     'footer.privacy': 'Privacidade',
-    'footer.cookies': 'Cookies'
+    'footer.cookies': 'Cookies',
+
+    // Cart
+    'cart.title': 'O seu Cesto de Pedidos',
+    'cart.empty': 'O seu cesto está vazio.',
+    'cart.back': 'Voltar às Soluções',
+    'cart.remove': 'Remover',
+    'cart.form.title': 'Solicitar Informação',
+    'cart.form.desc': 'Preencha o formulário abaixo para receber informações sobre todos os produtos selecionados.',
+    'cart.form.name': 'Nome',
+    'cart.form.email': 'Email',
+    'cart.form.phone': 'Telefone',
+    'cart.form.message': 'Mensagem',
+    'cart.form.submit': 'Enviar Pedido do Cesto',
+    'cart.success.title': 'Pedido Enviado!',
+    'cart.success.desc': 'Obrigado pelo seu interesse. Entraremos em contacto brevemente.'
   },
   en: {
     // Navbar
@@ -124,6 +144,7 @@ export const translations = {
     'nav.solutions': 'Solutions',
     'nav.technology': 'Technology',
     'nav.contact': 'Contact',
+    'nav.cart': 'Request',
     
     // Home
     'home.hero.subtitle': 'WELCOME TO LUNA BY RSB',
@@ -159,7 +180,10 @@ export const translations = {
     'solutions.desc': 'Explore our complete range of innovative equipment. From suspended holograms to water vapor screens, we have the ideal solution for your project.',
     'solutions.filter.all': 'All',
     'solutions.card.request_info': 'Request Information',
+    'solutions.card.added': 'In Info Basket',
     'solutions.card.videos': 'Videos',
+    'solutions.toast.title': 'ADDED TO LIST',
+    'solutions.toast.desc': 'The product has been added to your information request list.',
     
     // Technology
     'tech.subtitle': '02 // INNOVATION',
@@ -207,6 +231,7 @@ export const translations = {
     'contact.form.name': 'Name',
     'contact.form.company': 'Company',
     'contact.form.email': 'Email',
+    'contact.form.phone': 'Phone',
     'contact.form.message': 'Message',
     'contact.form.submit': 'Send Message',
     'contact.form.default_msg': 'Hello, I would like to request more information about the product:',
@@ -223,7 +248,22 @@ export const translations = {
     'footer.email_placeholder': 'Your email',
     'footer.rights': '© 2026 LUNA by RSB. All rights reserved.',
     'footer.privacy': 'Privacy',
-    'footer.cookies': 'Cookies'
+    'footer.cookies': 'Cookies',
+
+    // Cart
+    'cart.title': 'Your Request',
+    'cart.empty': 'Your request is empty.',
+    'cart.back': 'Back to Solutions',
+    'cart.remove': 'Remove',
+    'cart.form.title': 'Request Information',
+    'cart.form.desc': 'Fill out the form below to receive information about all selected products.',
+    'cart.form.name': 'Name',
+    'cart.form.email': 'Email',
+    'cart.form.phone': 'Phone',
+    'cart.form.message': 'Message',
+    'cart.form.submit': 'Send Request',
+    'cart.success.title': 'Request Sent!',
+    'cart.success.desc': 'Thank you for your interest. We will contact you shortly.'
   }
 };
 
