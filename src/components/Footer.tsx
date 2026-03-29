@@ -33,27 +33,28 @@ const VimeoLogo = ({ size = 20 }: { size?: number }) => (
 export default function Footer() {
   const { t } = useLanguage();
   return (
-    <footer className="bg-black border-t border-white/5 pt-24 pb-12">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-24">
-          <div className="space-y-6">
+    <footer className="bg-black border-t border-white/[0.03] pt-32 pb-16 relative overflow-hidden">
+      <div className="absolute inset-0 atmosphere opacity-20 pointer-events-none" />
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-12 mb-32">
+          <div className="space-y-10">
             <div className="-ml-4">
-              <Logo imgClassName="h-16 md:h-20" />
+              <Logo imgClassName="h-20 md:h-24 brightness-110" />
             </div>
-            <p className="text-sm opacity-40 leading-relaxed">
+            <p className="text-sm opacity-40 leading-relaxed font-light max-w-xs">
               {t('footer.desc')}
             </p>
-            <div className="pt-4 flex items-center gap-6">
+            <div className="pt-4 flex items-center gap-8">
               <img 
-                src="https://rsb.pt/wp-content/uploads/2023/12/Logo-RSB-inv_.png" 
+                src="https://rsb.pt/wp-content/uploads/2023/12/Logo-RSB.png" 
                 alt="RSB" 
-                className="h-10 opacity-80" 
+                className="h-12 opacity-100 transition-all duration-500" 
                 referrerPolicy="no-referrer" 
               />
               <img 
                 src="https://rsb.pt/wp-content/uploads/2021/04/RSB-513734082-Selo-TOP5-2025.png" 
                 alt="Selo TOP 5 2025" 
-                className="h-28 md:h-32 opacity-90" 
+                className="h-32 md:h-40 opacity-100 transition-all duration-500" 
                 referrerPolicy="no-referrer" 
               />
             </div>
@@ -77,64 +78,67 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="space-y-6">
-            <h4 className="font-bold text-sm uppercase tracking-widest">{t('footer.locations')}</h4>
-            <div className="space-y-4 text-sm opacity-50">
-              <div className="flex gap-3">
-                <MapPin size={18} className="shrink-0 text-brand" />
-                <p>{t('footer.porto')}</p>
+          <div className="space-y-10">
+            <h4 className="text-technical text-brand">{t('footer.locations')}</h4>
+            <div className="space-y-6 text-sm opacity-40 font-light">
+              <div className="flex gap-3 group cursor-default">
+                <MapPin size={16} className="shrink-0 text-brand group-hover:scale-110 transition-transform" />
+                <p className="group-hover:opacity-100 transition-opacity">{t('footer.porto')}</p>
               </div>
-              <div className="flex gap-3">
-                <MapPin size={18} className="shrink-0 text-brand" />
-                <p>{t('footer.lisbon')}</p>
+              <div className="flex gap-3 group cursor-default">
+                <MapPin size={16} className="shrink-0 text-brand group-hover:scale-110 transition-transform" />
+                <p className="group-hover:opacity-100 transition-opacity">{t('footer.lisbon')}</p>
               </div>
-              <div className="flex gap-3">
-                <MapPin size={18} className="shrink-0 text-brand" />
-                <p>{t('footer.australia')}</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="space-y-6">
-            <h4 className="font-bold text-sm uppercase tracking-widest">{t('footer.contacts')}</h4>
-            <div className="space-y-4 text-sm opacity-50">
-              <div className="flex items-center gap-3">
-                <Phone size={18} className="text-brand" />
-                <a href="tel:+351223210450" className="hover:text-brand transition-colors">+351 223 210 450</a>
-              </div>
-              <div className="flex items-center gap-3">
-                <Mail size={18} className="text-brand" />
-                <a href="mailto:geral@rsb.pt" className="hover:text-brand transition-colors">geral@rsb.pt</a>
-              </div>
-              <div className="flex items-center gap-3">
-                <Globe size={18} className="text-brand" />
-                <a href="https://www.rsb.pt" target="_blank" rel="noopener noreferrer" className="hover:text-brand transition-colors">www.rsb.pt</a>
+              <div className="flex gap-3 group cursor-default">
+                <MapPin size={16} className="shrink-0 text-brand group-hover:scale-110 transition-transform" />
+                <p className="group-hover:opacity-100 transition-opacity">{t('footer.australia')}</p>
               </div>
             </div>
           </div>
 
-          <div className="space-y-6">
-            <h4 className="font-bold text-sm uppercase tracking-widest">{t('footer.newsletter')}</h4>
-            <p className="text-sm opacity-40">{t('footer.newsletter_desc')}</p>
-            <div className="flex gap-2">
+          <div className="space-y-10">
+            <h4 className="text-technical text-brand">{t('footer.contacts')}</h4>
+            <div className="space-y-6 text-sm opacity-40 font-light">
+              <div className="flex items-center gap-3 group">
+                <Phone size={16} className="text-brand group-hover:scale-110 transition-transform" />
+                <a href="tel:+351223210450" className="hover:text-brand transition-colors group-hover:opacity-100">{t('footer.phone_label') || "+351 223 210 450"}</a>
+              </div>
+              <div className="flex items-center gap-3 group">
+                <Mail size={16} className="text-brand group-hover:scale-110 transition-transform" />
+                <a href="mailto:geral@rsb.pt" className="hover:text-brand transition-colors group-hover:opacity-100">geral@rsb.pt</a>
+              </div>
+              <div className="flex items-center gap-3 group">
+                <Globe size={16} className="text-brand group-hover:scale-110 transition-transform" />
+                <a href="https://www.rsb.pt" target="_blank" rel="noopener noreferrer" className="hover:text-brand transition-colors group-hover:opacity-100">www.rsb.pt</a>
+              </div>
+            </div>
+          </div>
+
+          <div className="space-y-10">
+            <h4 className="text-technical text-brand">{t('footer.newsletter')}</h4>
+            <p className="text-sm opacity-40 font-light leading-relaxed">{t('footer.newsletter_desc')}</p>
+            <div className="relative group">
               <input 
                 type="email" 
                 placeholder={t('footer.email_placeholder')}
                 aria-label="Endereço de email para newsletter"
-                className="bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-sm w-full focus:outline-none focus:border-brand"
+                className="w-full bg-white/[0.03] border border-white/10 rounded-full px-6 py-4 text-sm focus:outline-none focus:border-brand/50 transition-all group-hover:bg-white/[0.05]"
               />
-              <button className="p-2 bg-brand rounded-lg hover:bg-brand/80 transition-colors">
-                <ChevronRight />
+              <button 
+                className="absolute right-2 top-2 bottom-2 aspect-square bg-brand text-white rounded-full flex items-center justify-center hover:scale-105 active:scale-95 transition-all"
+                aria-label={t('footer.newsletter_submit') || "Subscrever newsletter"}
+              >
+                <ChevronRight size={18} />
               </button>
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-between items-center pt-12 border-t border-white/5 gap-6">
-          <p className="text-xs opacity-30">{t('footer.rights')}</p>
-          <div className="flex gap-8 text-xs opacity-30">
-            <Link to="/privacidade" className="hover:opacity-100 transition-opacity">{t('footer.privacy')}</Link>
-            <Link to="/cookies" className="hover:opacity-100 transition-opacity">{t('footer.cookies')}</Link>
+        <div className="flex flex-col md:flex-row justify-between items-center pt-16 border-t border-white/[0.03] gap-8 text-[10px] uppercase tracking-[0.2em] opacity-30 font-bold">
+          <p>© {new Date().getFullYear()} LUNA BY RSB. ALL RIGHTS RESERVED.</p>
+          <div className="flex gap-12">
+            <Link to="/privacidade" className="hover:text-brand transition-colors">{t('footer.privacy')}</Link>
+            <Link to="/cookies" className="hover:text-brand transition-colors">{t('footer.cookies')}</Link>
           </div>
         </div>
       </div>
