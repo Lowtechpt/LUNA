@@ -1,12 +1,18 @@
 import React from "react";
 import { motion } from "motion/react";
 import { useLanguage } from "../contexts/LanguageContext";
+import { Helmet } from "react-helmet-async";
 
 export default function CookiesPolicy() {
   const { language } = useLanguage();
 
   return (
     <div className="pt-32 pb-24 min-h-screen bg-black text-white">
+      <Helmet>
+        <title>{language === 'pt' ? 'Política de Cookies | LUNA by RSB' : 'Cookies Policy | LUNA by RSB'}</title>
+        <meta name="description" content="Política de Cookies da LUNA by RSB. Informação sobre o uso de cookies no nosso site de Ativações de Marca Tecnológicas." />
+        <meta name="keywords" content="Política de Cookies, LUNA by RSB, Soluções de Visualização Tridimensional, Ativações de Marca Tecnológicas" />
+      </Helmet>
       <div className="max-w-4xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

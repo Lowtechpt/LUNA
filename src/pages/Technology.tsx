@@ -10,6 +10,38 @@ export default function Technology() {
       <Helmet>
         <title>Tecnologia LUNA | Engenharia de Precisão | RSB</title>
         <meta name="description" content="Conheça a tecnologia por trás da LUNA. Engenharia de precisão, ótica avançada e produção de conteúdos 3D para experiências holográficas." />
+        <meta name="keywords" content="Soluções de Visualização Tridimensional, Ativações de Marca Tecnológicas, Display LED Transparente 4K, Holografia 3D, Engenharia de Precisão, Ótica Avançada" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "TechArticle",
+            "headline": "Tecnologia LUNA: Engenharia de Precisão e Soluções de Visualização Tridimensional",
+            "description": "Explicação técnica sobre a engenharia de precisão, ótica avançada e produção de conteúdos 3D por trás dos sistemas holográficos LUNA.",
+            "author": {
+              "@type": "Organization",
+              "name": "RSB"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "LUNA by RSB"
+            },
+            "keywords": "Soluções de Visualização Tridimensional, Ativações de Marca Tecnológicas, Display LED Transparente 4K, Holografia 3D",
+            "about": [
+              {
+                "@type": "Thing",
+                "name": "Soluções de Visualização Tridimensional"
+              },
+              {
+                "@type": "Thing",
+                "name": "Ativações de Marca Tecnológicas"
+              },
+              {
+                "@type": "Thing",
+                "name": "Display LED Transparente 4K"
+              }
+            ]
+          })}
+        </script>
       </Helmet>
       <div className="absolute inset-0 atmosphere opacity-30 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-6 relative z-10">

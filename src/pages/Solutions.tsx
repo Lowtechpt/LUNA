@@ -22,7 +22,7 @@ const ProductCard = React.memo(({ product, i, onPlay, onAdd, categories }: { pro
       transition={{ duration: 0.4, delay: i * 0.05 }}
       className="group glass-panel rounded-sm overflow-hidden flex flex-col h-full hover:bg-white/[0.02] transition-colors duration-500"
     >
-      <div className="aspect-[4/3] overflow-hidden relative group/video">
+      <div className="aspect-[4/3] overflow-hidden relative group/video bg-cover bg-center" style={{ backgroundImage: `url(${product.image})` }}>
         {product.videoUrls && product.videoUrls.length > 0 ? (
           <>
             <iframe 
@@ -31,6 +31,7 @@ const ProductCard = React.memo(({ product, i, onPlay, onAdd, categories }: { pro
               frameBorder="0"
               allow="autoplay; fullscreen; picture-in-picture" 
               title={product.title}
+              loading="lazy"
             />
             <div 
               className="absolute inset-0 z-20 bg-black/10 group-hover/video:bg-black/40 transition-colors duration-300 flex items-center justify-center cursor-pointer"
@@ -131,6 +132,27 @@ export default function Solutions() {
       <Helmet>
         <title>Soluções Digitais e Equipamentos | LUNA by RSB</title>
         <meta name="description" content="Explore a nossa gama completa de equipamentos holográficos e soluções digitais inovadoras da LUNA by RSB." />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "itemListElement": products.map((product, index) => ({
+              "@type": "ListItem",
+              "position": index + 1,
+              "item": {
+                "@type": "Product",
+                "name": product.title,
+                "description": product.description,
+                "image": product.image,
+                "brand": {
+                  "@type": "Brand",
+                  "name": "LUNA by RSB"
+                },
+                "keywords": "Soluções de Visualização Tridimensional, Ativações de Marca Tecnológicas, Display LED Transparente 4K"
+              }
+            }))
+          })}
+        </script>
       </Helmet>
       <div className="absolute inset-0 atmosphere opacity-30 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-6 relative z-10">

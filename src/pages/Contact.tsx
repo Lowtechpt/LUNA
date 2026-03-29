@@ -34,6 +34,42 @@ export default function Contact() {
       <Helmet>
         <title>Contactos | Fale com a LUNA by RSB</title>
         <meta name="description" content="Entre em contacto com a equipa da LUNA by RSB. Estamos prontos para elevar a sua marca ao próximo nível com tecnologia holográfica." />
+        <meta name="keywords" content="Soluções de Visualização Tridimensional, Ativações de Marca Tecnológicas, Display LED Transparente 4K, Hologramas 3D, Contacto RSB" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "LUNA by RSB",
+            "alternateName": "LUNA Innovation",
+            "description": "Especialistas em Soluções de Visualização Tridimensional e Ativações de Marca Tecnológicas.",
+            "image": "https://rsb.pt/wp-content/uploads/2023/12/Logo-RSB-inv_.png",
+            "telephone": "+351 223 210 450",
+            "email": "geral@rsb.pt",
+            "url": "https://www.rsb.pt",
+            "knowsAbout": [
+              "Soluções de Visualização Tridimensional",
+              "Ativações de Marca Tecnológicas",
+              "Display LED Transparente 4K",
+              "Holografia 3D"
+            ],
+            "address": [
+              {
+                "@type": "PostalAddress",
+                "streetAddress": "Rua do Covelo nº232",
+                "addressLocality": "Porto",
+                "postalCode": "4200-238",
+                "addressCountry": "PT"
+              },
+              {
+                "@type": "PostalAddress",
+                "streetAddress": "Av. Gago Coutinho, N.77 – 2B",
+                "addressLocality": "Lisboa",
+                "postalCode": "2700-405",
+                "addressCountry": "PT"
+              }
+            ]
+          })}
+        </script>
       </Helmet>
       <div className="absolute inset-0 atmosphere opacity-30 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-6 relative z-10">

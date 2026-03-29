@@ -1,12 +1,18 @@
 import React from "react";
 import { motion } from "motion/react";
 import { useLanguage } from "../contexts/LanguageContext";
+import { Helmet } from "react-helmet-async";
 
 export default function PrivacyPolicy() {
   const { language } = useLanguage();
 
   return (
     <div className="pt-32 pb-24 min-h-screen bg-black text-white">
+      <Helmet>
+        <title>{language === 'pt' ? 'Política de Privacidade | LUNA by RSB' : 'Privacy Policy | LUNA by RSB'}</title>
+        <meta name="description" content="Política de Privacidade da LUNA by RSB. Saiba como tratamos os seus dados no âmbito das nossas Soluções de Visualização Tridimensional." />
+        <meta name="keywords" content="Política de Privacidade, RGPD, LUNA by RSB, Soluções de Visualização Tridimensional, Ativações de Marca Tecnológicas" />
+      </Helmet>
       <div className="max-w-4xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
